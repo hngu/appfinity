@@ -1,0 +1,8 @@
+{
+  "name": "interstellar",
+  "version": "1.0.0",
+  "description": "InterStellar Design Components",
+  "main": "index.js",
+  "author": "Huy Ngu",
+  "license": "MIT"
+}
