@@ -1,15 +1,22 @@
 import React from 'react';
-import { FButton } from './Button';
+import { Story } from '@storybook/react';
+import { Button, Props } from './Button';
 
 export default {
-  title: 'Button', // should be unique name
-  component: FButton,
+  title: 'Inputs/Button', // should be unique name
+  component: Button,
 };
 
-export const Primary: React.FC = () => {
-  return <FButton color="primary">Primary</FButton>;
+const Template: Story<Props> = (args) => <Button {...args} />;
+
+export const Primary: Story<Props> = Template.bind({});
+Primary.args = {
+  color: 'primary',
+  children: 'Primary',
 };
 
-export const Secondary: React.FC = () => {
-  return <FButton color="secondary">Secondary</FButton>;
+export const Secondary: Story<Props> = Template.bind({});
+Secondary.args = {
+  color: 'secondary',
+  children: 'Secondary',
 };
