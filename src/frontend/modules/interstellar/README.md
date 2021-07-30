@@ -10,3 +10,6 @@
 
 ### Run storybook
 1. Run yarn storybook
+
+### Build storybook
+1. Run yarn run build-storybook
