@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story } from '@storybook/react';
-import { Button, Props } from './Button';
-import { Center } from '../utils/Center/Center';
+import { Button, ButtonProps } from './Button';
+import { Center } from '../utils/Center';
 
 import { addDecorator } from '@storybook/react';
 
@@ -19,15 +19,15 @@ export default {
   decorators: [(storyFn) => <Center>{storyFn()}</Center>],
 } as StoryMetadata;
 
-const Template: Story<Props> = (args) => <Button {...args} />;
+const Template: Story<ButtonProps> = (args) => <Button {...args} />;
 
-export const Primary: Story<Props> = Template.bind({});
+export const Primary: Story<ButtonProps> = Template.bind({});
 Primary.args = {
   color: 'primary',
   children: 'Primary',
 };
 
-export const Secondary: Story<Props> = Template.bind({});
+export const Secondary: Story<ButtonProps> = Template.bind({});
 Secondary.args = {
   color: 'secondary',
   children: 'Secondary',
