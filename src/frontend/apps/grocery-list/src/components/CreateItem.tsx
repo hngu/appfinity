@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Button} from 'interstellar/src/components/Button';
 
 export const CreateItem = () => {
   const [groceryName, setGroceryName] = useState('');
@@ -29,7 +30,7 @@ export const CreateItem = () => {
           <input type="checkbox" name="add-to-list" checked={shouldAddToList} onChange={() => setShouldAddToList(prev => !prev)} />
           <label>Add to Current List</label>
         </div>
-        <button type="submit">Submit</button>
+        <Button>Submit</Button>
       </form>
     </>
   );

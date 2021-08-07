@@ -1,7 +1,7 @@
 {
-  "name": "interstellar",
+  "name": "starter-pack",
   "version": "1.0.0",
-  "description": "InterStellar Design Components",
+  "description": "Starter Pack",
   "main": "index.js",
   "author": "Huy Ngu",
   "license": "MIT",
