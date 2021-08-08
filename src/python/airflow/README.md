@@ -2,16 +2,18 @@
 - Uses version 1.10.10 (TODO upgrade to version 2)
 
 ### Setup
-- Build docker via command: `docker build -t airflow-basic .` This just builds a docker image from the Dockerfile in current directory and names it `airflow-basic`.
-- Run the docker container via: `docker run -p 8080:8080 -d airflow-basic` Runs the container named `airflow-basic` with specified ports in the background.
-- Verify it is running via `docker ps`. Should should the `airflow-basic` container running.
+- Run the command `./start.sh` to run docker compose
+- When it is done, when a few minutes as airflow tries to start up. You can check the progress via `docker ps`
 
 ### Docker CLI
 ```
-$ docker ps # get the id of the running container
+$ docker ps # list all running containers (helps you get their ids)
 $ docker stop <container id> # kill it (gracefully)
-$ docker exec -it container_id /bin/bash #
+$ docker exec -it container_id /bin/bash # open a bash shell for docker container
 ```
+- Build docker via command: `docker build -t airflow-basic .` This just builds a docker image from the Dockerfile in current directory and names it `airflow-basic`.
+- Run the docker container via: `docker run -p 8080:8080 -d airflow-basic` Runs the container named `airflow-basic` with specified ports in the background.
+- Verify it is running via `docker ps`. Should should the `airflow-basic` container running.
 
 ### Airflow CLI
 ```
