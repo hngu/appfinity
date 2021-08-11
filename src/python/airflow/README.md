@@ -2,8 +2,10 @@
 - Uses version 1.10.10 (TODO upgrade to version 2)
 
 ### Setup
+- Make sure in Docker you setup file sharing by adding `/Users` to the list
 - Run the command `./start.sh` to run docker compose
-- When it is done, when a few minutes as airflow tries to start up. You can check the progress via `docker ps`
+- When it is done, when a couple of minutes as airflow tries to start up. You can check the progress via `docker ps`
+- Then go to `localhost:8080` to open airflow webserver.
 
 ### Docker CLI
 ```
@@ -70,5 +72,5 @@ airflow list_tasks example_python_operator
 
 
 airflow test example_python_operator print_the_context 2018-05-07
-* Allow to test a task (print_the_context) from a given dag (example_python_operator here) without taking care of dependencies and past runs. Useful for debugging.
+* Allow to test a task (print_the_context) from a given dag (example_python_operator here) on a specific date (2018-05-07, set a date in the past to execute immediately) without taking care of dependencies and past runs. Useful for debugging.
 ```
