@@ -4,6 +4,7 @@ from airflow.sensors.http_sensor import HttpSensor
 from airflow.contrib.sensors.file_sensor import FileSensor
 from airflow.operators.python_operator import PythonOperator
 from airflow.operators.bash_operator import BashOperator
+from airflow.operators.hive_operator import HiveOperator
 
 import csv
 import requests
@@ -91,5 +92,34 @@ with DAG(
     bash_command="""
       hdfs dfs -mkdir -p /forex && \
         hdfs dfs -put -f $AIRFLOW_HOME/dags/files/forex_rates.json /forex
+    """
+  )
+
+  """
+    Create the hive table
+    Need to setup a connection with the following fields:
+    - Conn ID: hive_conn
+    - Conn Type: Hive Server 2 Thrift
+    - Host: hive-server (from docker ps)
+    - Port: 10000
+    - hive/hive
+  """
+  creating_forex_rates_table = HiveOperator(
+    task_id="creating_forex_rates_table",
+    hive_cli_conn_id="hive_conn",
+    hql="""
+        CREATE EXTERNAL TABLE IF NOT EXISTS forex_rates(
+            base STRING,
+            last_update DATE,
+            eur DOUBLE,
+            usd DOUBLE,
+            nzd DOUBLE,
+            gbp DOUBLE,
+            jpy DOUBLE,
+            cad DOUBLE
+            )
+        ROW FORMAT DELIMITED
+        FIELDS TERMINATED BY ','
+        STORED AS TEXTFILE
     """
   )
