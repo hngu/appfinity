@@ -1,10 +1,10 @@
-import path from "path";
-import webpack from "webpack";
-import HtmlWebpackPlugin from "html-webpack-plugin";
-import { Configuration as WebpackConfiguration } from "webpack";
-import { Configuration as WebpackDevServerConfiguration } from "webpack-dev-server";
+import path from 'path';
+import webpack from 'webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import { Configuration as WebpackConfiguration } from 'webpack';
+import { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
-import ESLintPlugin from "eslint-webpack-plugin";
+import ESLintPlugin from 'eslint-webpack-plugin';
 
 // hack: merge types
 interface Configuration extends WebpackConfiguration {
@@ -12,51 +12,47 @@ interface Configuration extends WebpackConfiguration {
 }
 
 const config: Configuration = {
-  mode: "development",
+  mode: 'development',
   output: {
-    publicPath: "/",
+    publicPath: '/',
   },
-  entry: "./src/index.tsx",
+  entry: './src/index.tsx',
   module: {
     rules: [
       {
         test: /\.(ts|js)x?$/i,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            presets: [
-              "@babel/preset-env",
-              "@babel/preset-react",
-              "@babel/preset-typescript",
-            ],
+            presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
           },
         },
       },
     ],
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js"],
+    extensions: ['.tsx', '.ts', '.js'],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "src/index.html",
+      template: 'src/index.html',
     }),
     new webpack.HotModuleReplacementPlugin(),
     new ForkTsCheckerWebpackPlugin({
-      async: false
+      async: false,
     }),
     new ESLintPlugin({
-      extensions: ["js", "jsx", "ts", "tsx"],
+      extensions: ['js', 'jsx', 'ts', 'tsx'],
     }),
   ],
-  devtool: "inline-source-map",
+  devtool: 'inline-source-map',
   devServer: {
-    contentBase: path.join(__dirname, "build"),
+    contentBase: path.join(__dirname, 'build'),
     historyApiFallback: true,
     port: 4000,
     open: true,
-    hot: true
+    hot: true,
   },
 };
 
