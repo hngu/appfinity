@@ -1,7 +1,7 @@
 {
-  "name": "starter-pack",
+  "name": "sandbox",
   "version": "1.0.0",
-  "description": "Starter Pack",
+  "description": "A sandbox app",
   "main": "index.js",
   "author": "Huy Ngu",
   "license": "MIT",
