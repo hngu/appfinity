@@ -6,6 +6,7 @@
   "author": "Huy Ngu",
   "license": "MIT",
   "dependencies": {
+    "babel-plugin-macros": "^3.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-error-boundary": "^3.1.3",
