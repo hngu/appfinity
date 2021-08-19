@@ -13,9 +13,6 @@ https://bigfrontend.dev/
 https://medium.com/@manojsingh047/understanding-frontend-security-ff6585395534
 https://www.youtube.com/results?search_query=front+end+system+design
 
-Build Promise from scratch
-https://levelup.gitconnected.com/understand-javascript-promises-by-building-a-promise-from-scratch-84c0fd855720
-
 Typeahead
 - Clicking a suggested item should populate the input field and hide the other results
 - Clicking delete icon should wipe out the input field value
