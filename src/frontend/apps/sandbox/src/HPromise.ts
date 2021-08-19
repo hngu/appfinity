@@ -13,28 +13,43 @@ type PromiseHandler = (resolve: HandlerFunction, reject: HandlerFunction) => voi
 
 class HPromise {
   callbacks: SuccessFailureTuple[];
+  catchHandler: HandlerFunction;
 
   constructor(callback: PromiseHandler) {
     this.callbacks = [];
+    this.catchHandler = () => {
+      /* does nothing */
+    };
+
     const resolve: HandlerFunction = (success: unknown) => {
       const callback = this.callbacks.shift();
       if (callback && callback[0]) {
-        const result = callback[0](success);
-        if (result instanceof HPromise) {
-          result.then(resolve, reject);
-        } else {
-          resolve(result);
+        try {
+          const result = callback[0](success);
+          if (result instanceof HPromise) {
+            result.then(resolve, reject);
+          } else {
+            resolve(result);
+          }
+        } catch (e) {
+          this.callbacks = [];
+          this.catchHandler(e);
         }
       }
     };
     const reject: HandlerFunction = (failure: unknown) => {
       const callback = this.callbacks.shift();
       if (callback && callback[1]) {
-        const result = callback[1](failure);
-        if (result instanceof HPromise) {
-          result.then(resolve, reject);
-        } else {
-          resolve(result);
+        try {
+          const result = callback[1](failure);
+          if (result instanceof HPromise) {
+            result.then(resolve, reject);
+          } else {
+            resolve(result);
+          }
+        } catch (e) {
+          this.callbacks = [];
+          this.catchHandler(e);
         }
       }
     };
@@ -44,6 +59,11 @@ class HPromise {
 
   then(handleSuccess: HandlerFunction, handleFailure?: HandlerFunction): HPromise {
     this.callbacks.push([handleSuccess, handleFailure]);
+    return this;
+  }
+
+  catch(handleError: HandlerFunction): HPromise {
+    this.catchHandler = handleError;
     return this;
   }
 }

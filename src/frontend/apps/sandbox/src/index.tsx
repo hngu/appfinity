@@ -29,7 +29,10 @@ new HPromise((resolve: HandlerFunction) => {
   )
   .then((success: unknown) => {
     console.log(success);
-    return true;
+    throw new Error('oh no');
+  })
+  .catch((err) => {
+    console.log('error', err);
   });
 
 const App = () => {
