@@ -1,46 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { ErrorBoundary, FallbackProps } from 'react-error-boundary';
-import { StarRating } from './components/StarRating';
-import HPromise, { HandlerFunction } from './HPromise';
-
-new HPromise((resolve: HandlerFunction) => {
-  setTimeout(() => {
-    resolve('Huy');
-  }, 1000);
-})
-  .then((success: unknown) => {
-    console.log('success', success);
-    return new HPromise((_: HandlerFunction, reject: HandlerFunction) => {
-      setTimeout(() => {
-        reject('Huy 2');
-      }, 1000);
-    });
-  })
-  .then(
-    (success: unknown) => {
-      console.log('success', success);
-      return true;
-    },
-    (failure: unknown) => {
-      console.log('failure', failure);
-      return true;
-    },
-  )
-  .then((success: unknown) => {
-    console.log(success);
-    throw new Error('oh no');
-  })
-  .catch((err) => {
-    console.log('error', err);
-  });
+import PromisePage from './pages/PromisePage';
+import StarRatingPage from './pages/StarRatingPage';
 
 const App = () => {
   return (
-    <>
+    <Router>
       <h1>My React and TypeScript App!</h1>
-      <StarRating />
-    </>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/star-rating">Star Rating Widget</Link>
+          </li>
+          <li>
+            <Link to="/custom-promise">Custom Promise</Link>
+          </li>
+        </ul>
+      </nav>
+      <div>
+        <Route path="/star-rating" component={StarRatingPage}></Route>
+        <Route path="/custom-promise" component={PromisePage}></Route>
+      </div>
+    </Router>
   );
 };
 
