@@ -39,8 +39,6 @@ calendar for any month like date picker
 
 data grid (search, sort)
 
-Implement custom Higher Order Functions like Map, Reduce, Filter, Sort
-
 analog clock
 
 todo list
@@ -64,6 +62,8 @@ layout images in masonry format
 drag and drop/draggable html elements
 
 flipable flash cards
+
+modal
 
 ### Systems
 Coupon Creator
