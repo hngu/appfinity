@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { ErrorBoundary, FallbackProps } from 'react-error-boundary';
 import PromisePage from './pages/PromisePage';
 import StarRatingPage from './pages/StarRatingPage';
+import TypeAheadPage from './pages/TypeAheadPage';
 
 const App = () => {
   return (
@@ -17,11 +18,15 @@ const App = () => {
           <li>
             <Link to="/custom-promise">Custom Promise</Link>
           </li>
+          <li>
+            <Link to="/typeahead">TypeAhead Example</Link>
+          </li>
         </ul>
       </nav>
       <div>
         <Route path="/star-rating" component={StarRatingPage}></Route>
         <Route path="/custom-promise" component={PromisePage}></Route>
+        <Route path="/typeahead" component={TypeAheadPage}></Route>
       </div>
     </Router>
   );
