@@ -5,6 +5,36 @@ import { ErrorBoundary, FallbackProps } from 'react-error-boundary';
 import PromisePage from './pages/PromisePage';
 import StarRatingPage from './pages/StarRatingPage';
 import TypeAheadPage from './pages/TypeAheadPage';
+import ToDoPage from './pages/ToDoPage';
+
+type Page = {
+  path: string;
+  title: string;
+  component: React.FC;
+};
+
+const Pages: Page[] = [
+  {
+    path: '/star-rating',
+    title: 'Star Rating Widget',
+    component: StarRatingPage,
+  },
+  {
+    path: '/custom-promise',
+    title: 'Custom Promise',
+    component: PromisePage,
+  },
+  {
+    path: '/typeahead',
+    title: 'Typeahead Example',
+    component: TypeAheadPage,
+  },
+  {
+    path: '/todo',
+    title: 'Todo Page',
+    component: ToDoPage,
+  },
+];
 
 const App = () => {
   return (
@@ -12,21 +42,17 @@ const App = () => {
       <h1>My React and TypeScript App!</h1>
       <nav>
         <ul>
-          <li>
-            <Link to="/star-rating">Star Rating Widget</Link>
-          </li>
-          <li>
-            <Link to="/custom-promise">Custom Promise</Link>
-          </li>
-          <li>
-            <Link to="/typeahead">TypeAhead Example</Link>
-          </li>
+          {Pages.map((page) => (
+            <li key={page.path}>
+              <Link to={page.path}>{page.title}</Link>
+            </li>
+          ))}
         </ul>
       </nav>
       <div>
-        <Route path="/star-rating" component={StarRatingPage}></Route>
-        <Route path="/custom-promise" component={PromisePage}></Route>
-        <Route path="/typeahead" component={TypeAheadPage}></Route>
+        {Pages.map((page) => (
+          <Route key={page.path} path={page.path} component={page.component}></Route>
+        ))}
       </div>
     </Router>
   );

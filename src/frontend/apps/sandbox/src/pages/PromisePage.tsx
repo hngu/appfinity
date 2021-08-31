@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import HPromise, { HandlerFunction } from '../HPromise';
+import HPromise, { HandlerFunction } from '../utils/HPromise';
 
 const PromisePage: FC = () => {
   const handleClick = () => {

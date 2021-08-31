@@ -13,12 +13,6 @@ https://bigfrontend.dev/
 https://medium.com/@manojsingh047/understanding-frontend-security-ff6585395534
 https://www.youtube.com/results?search_query=front+end+system+design
 
-Typeahead
-- Clicking a suggested item should populate the input field and hide the other results
-- Clicking delete icon should wipe out the input field value
-- Full List should display when focused on the input field and nothing is writtten in the box
-- Full List should hide when we leave the input fields focus
-
 Star Rating
 
 Design Popover
@@ -67,10 +61,15 @@ modal
 
 ### Systems
 Coupon Creator
-- Master coupon code or unique coupon code
-- Rules: minimum purchase, what product types it is applied to
-- Schedule (start, end)
-- Amount (how many coupons are available)
+- Coupon Name
+- Coupon Type (master code, unique code)
+- Coupon Rules
+  - Coupon Code (for master, it is just one, for unique you can add a prefix)
+  - Discount Type (Fixed, Percentage, Free Shipping)
+  - Checkbox for requires minimum purchase amount (if checked, enter amount)
+- Schedule
+  - Start time
+  - Expiration (Optional end time)
 
 Popup Creator
 - Popup Form (first name, email, phone)
