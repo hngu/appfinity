@@ -13,6 +13,12 @@ https://bigfrontend.dev/
 https://medium.com/@manojsingh047/understanding-frontend-security-ff6585395534
 https://www.youtube.com/results?search_query=front+end+system+design
 
+https://blog.logrocket.com/rendering-large-lists-with-react-virtualized-82741907a6b3/
+https://learnk8s.io/kubernetes-for-developers
+https://dev.to/lunaticmonk/understanding-the-node-js-event-loop-phases-and-how-it-executes-the-javascript-code-1j9
+https://blog.logrocket.com/rate-limiting-node-js/
+https://www.digitalocean.com/community/tutorials/js-drag-and-drop-vanilla-js
+
 Star Rating
 
 Design Popover
@@ -34,8 +40,6 @@ calendar for any month like date picker
 data grid (search, sort)
 
 analog clock
-
-todo list
 
 calculator
 

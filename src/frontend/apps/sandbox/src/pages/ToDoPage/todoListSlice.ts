@@ -40,6 +40,14 @@ const todoListSlice = createSlice({
       }
       state.todos[currentTodoIndex] = updatedTodo;
     },
+    /**
+     * if you want to separate reducers from actions, just provide a extraReducers() function
+     * like this:
+     * extraReducers: (builder) {
+     *  builder.addCase('ACTION', (state, action) => {
+     * });
+     * }
+     */
   },
 });
 
