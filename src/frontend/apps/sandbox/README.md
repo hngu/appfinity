@@ -17,7 +17,6 @@ https://blog.logrocket.com/rendering-large-lists-with-react-virtualized-82741907
 https://learnk8s.io/kubernetes-for-developers
 https://dev.to/lunaticmonk/understanding-the-node-js-event-loop-phases-and-how-it-executes-the-javascript-code-1j9
 https://blog.logrocket.com/rate-limiting-node-js/
-https://www.digitalocean.com/community/tutorials/js-drag-and-drop-vanilla-js
 
 Star Rating
 
@@ -56,8 +55,6 @@ implement sort
 progress bar
 
 layout images in masonry format
-
-drag and drop/draggable html elements
 
 flipable flash cards
 
