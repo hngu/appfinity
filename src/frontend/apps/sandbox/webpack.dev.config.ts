@@ -16,11 +16,11 @@ const config: Configuration = {
   output: {
     publicPath: '/',
   },
-  entry: './src/index.tsx',
+  entry: './src/index.jsx',
   module: {
     rules: [
       {
-        test: /\.(ts|js)x?$/i,
+        test: /\.(ts)x?$/i,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -29,10 +29,20 @@ const config: Configuration = {
           },
         },
       },
+      {
+        test: /\.(js)x?$/i,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+          },
+        },
+      },
     ],
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.tsx', '.ts', '.js', '.jsx'],
   },
   plugins: [
     new HtmlWebpackPlugin({

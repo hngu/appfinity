@@ -1,19 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import { ErrorBoundary, FallbackProps } from 'react-error-boundary';
+import { ErrorBoundary } from 'react-error-boundary';
 import PromisePage from './pages/PromisePage';
 import StarRatingPage from './pages/StarRatingPage';
 import TypeAheadPage from './pages/TypeAheadPage';
 import ToDoPage from './pages/ToDoPage';
+import DragDropPage from './pages/DragDropPage';
 
-type Page = {
-  path: string;
-  title: string;
-  component: React.FC;
-};
-
-const Pages: Page[] = [
+const Pages = [
   {
     path: '/star-rating',
     title: 'Star Rating Widget',
@@ -33,6 +28,11 @@ const Pages: Page[] = [
     path: '/todo',
     title: 'Todo Page',
     component: ToDoPage,
+  },
+  {
+    path: '/dragdrop',
+    title: 'Drag and Drop',
+    component: DragDropPage,
   },
 ];
 
@@ -58,7 +58,7 @@ const App = () => {
   );
 };
 
-function ErrorFallback({ error }: FallbackProps) {
+function ErrorFallback({ error }) {
   return (
     <div role="alert">
       <p>Something went wrong:</p>
