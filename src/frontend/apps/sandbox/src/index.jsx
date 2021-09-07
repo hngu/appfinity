@@ -7,6 +7,7 @@ import StarRatingPage from './pages/StarRatingPage';
 import TypeAheadPage from './pages/TypeAheadPage';
 import ToDoPage from './pages/ToDoPage';
 import DragDropPage from './pages/DragDropPage';
+import VirtualListPage from './pages/VirtualListPage';
 
 const Pages = [
   {
@@ -33,6 +34,11 @@ const Pages = [
     path: '/dragdrop',
     title: 'Drag and Drop',
     component: DragDropPage,
+  },
+  {
+    path: '/virtual-list',
+    title: 'Virtual List',
+    component: VirtualListPage,
   },
 ];
 
