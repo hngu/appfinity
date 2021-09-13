@@ -13,7 +13,6 @@ https://bigfrontend.dev/
 https://medium.com/@manojsingh047/understanding-frontend-security-ff6585395534
 https://www.youtube.com/results?search_query=front+end+system+design
 
-https://blog.logrocket.com/rendering-large-lists-with-react-virtualized-82741907a6b3/
 https://learnk8s.io/kubernetes-for-developers
 https://dev.to/lunaticmonk/understanding-the-node-js-event-loop-phases-and-how-it-executes-the-javascript-code-1j9
 https://blog.logrocket.com/rate-limiting-node-js/
@@ -22,15 +21,13 @@ Star Rating
 
 Design Popover
 
-Design Accordion
+Design Accordion https://material-ui.com/components/accordion/
 
-Design Carousel
+Design Carousel https://github.com/brainhubeu/react-carousel
 
 Design Navbar
 
 Infinite Scroll
-
-Debounce/Throttle function
 
 Tictactoe
 
@@ -47,10 +44,6 @@ connect 4
 poll widget
 
 event emitter
-
-flatten nested JS array
-
-implement sort
 
 progress bar
 

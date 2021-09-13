@@ -8,6 +8,7 @@ import TypeAheadPage from './pages/TypeAheadPage';
 import ToDoPage from './pages/ToDoPage';
 import DragDropPage from './pages/DragDropPage';
 import VirtualListPage from './pages/VirtualListPage';
+import UtilsPage from './pages/UtilsPage';
 
 const Pages = [
   {
@@ -39,6 +40,11 @@ const Pages = [
     path: '/virtual-list',
     title: 'Virtual List',
     component: VirtualListPage,
+  },
+  {
+    path: '/utils-page',
+    title: 'Utils Page',
+    component: UtilsPage,
   },
 ];
 
