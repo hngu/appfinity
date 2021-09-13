@@ -3,13 +3,24 @@ import styled from 'styled-components/macro';
 
 const DragDropPage = () => {
   const [counter, setCounter] = useState(0);
+  const [draggable, setDraggable] = useState([
+    {
+      id: 1,
+      name: 'Draggable 1',
+    },
+    {
+      id: 2,
+      name: 'Draggable 2',
+    },
+  ]);
+  const [dropped, setDropped] = useState([]);
 
   const triggerChange = () => {
     setCounter((c) => c + 1);
   };
 
-  const onDragStart = (event) => {
-    event.dataTransfer.setData('text/plain', event.target.id);
+  const onDragStart = (event, id) => {
+    event.dataTransfer.setData('text/plain', id);
   };
 
   const onDragOver = (event) => event.preventDefault();
@@ -19,10 +30,10 @@ const DragDropPage = () => {
     // get a reference to the dropzone via event.target
     // get document by id and append to dropzone
     // clear the datatransfer
-    const id = event.dataTransfer.getData('text');
-    const draggableElement = document.getElementById(id);
-    const dropzone = event.target;
-    dropzone.appendChild(draggableElement);
+    const id = parseInt(event.dataTransfer.getData('text'), 10);
+    const draggedItem = draggable.find((item) => item.id === id);
+    setDraggable((draggableItems) => draggableItems.filter((item) => item.id != id));
+    setDropped((droppedItems) => [...droppedItems, draggedItem]);
     event.dataTransfer.clearData();
   };
 
@@ -31,13 +42,18 @@ const DragDropPage = () => {
       <div>
         <Parent>
           <Origin>
-            <Draggable id="draggable-1" draggable={true} onDragStart={onDragStart}>
-              draggable
-            </Draggable>
+            {draggable.map((item) => (
+              <Draggable key={item.id} draggable={true} onDragStart={(event) => onDragStart(event, item.id)}>
+                {item.name}
+              </Draggable>
+            ))}
           </Origin>
 
           <Dropzone onDragOver={onDragOver} onDrop={onDrop}>
-            dropzone
+            <div>dropzone</div>
+            {dropped.map((item) => (
+              <Draggable key={item.id}>{item.name}</Draggable>
+            ))}
           </Dropzone>
         </Parent>
         <button type="button" onClick={triggerChange}>
