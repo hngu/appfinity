@@ -11,11 +11,9 @@
 ### Sandbox ideas
 https://bigfrontend.dev/
 https://medium.com/@manojsingh047/understanding-frontend-security-ff6585395534
-https://www.youtube.com/results?search_query=front+end+system+design
 
 https://learnk8s.io/kubernetes-for-developers
 https://dev.to/lunaticmonk/understanding-the-node-js-event-loop-phases-and-how-it-executes-the-javascript-code-1j9
-https://blog.logrocket.com/rate-limiting-node-js/
 
 Star Rating
 
@@ -53,6 +51,8 @@ flipable flash cards
 
 modal
 
+stepper https://ishadeed.com/article/stepper-component-html-css/
+
 ### Systems
 Coupon Creator
 - Coupon Name
@@ -65,11 +65,19 @@ Coupon Creator
   - Start time
   - Expiration (Optional end time)
 
+Contacts Table
+
 Popup Creator
-- Popup Form (first name, email, phone)
-- Popup Design
-- Set targeting rules (when, how, how long)
+- Popup Form Fields (first name, email, phone)
+- Popup Design (this launches a preview of the popup for editing the look)
+  - save vs publish
+- Set targeting rules
+  - when to show it
+  - who to show it (BE needs to know who to show, the FE just need to know if it should show popup or not)
+  - how long to show it
 
 Template Builder
 
 Analytics
+
+Abandon Cart Email Design

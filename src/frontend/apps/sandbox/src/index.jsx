@@ -9,6 +9,7 @@ import ToDoPage from './pages/ToDoPage';
 import DragDropPage from './pages/DragDropPage';
 import VirtualListPage from './pages/VirtualListPage';
 import UtilsPage from './pages/UtilsPage';
+import AccordionPage from './pages/AccordionPage';
 
 const Pages = [
   {
@@ -45,6 +46,11 @@ const Pages = [
     path: '/utils-page',
     title: 'Utils Page',
     component: UtilsPage,
+  },
+  {
+    path: '/accordion',
+    title: 'Accordion Page',
+    component: AccordionPage,
   },
 ];
 
