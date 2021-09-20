@@ -19,8 +19,6 @@ Star Rating
 
 Design Popover
 
-Design Accordion https://material-ui.com/components/accordion/
-
 Design Carousel https://github.com/brainhubeu/react-carousel
 
 Design Navbar
