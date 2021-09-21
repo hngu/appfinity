@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import {
   Button,
   List,
@@ -10,6 +10,8 @@ import {
   Container,
   Paper,
   InputBase,
+  CircularProgress,
+  Box,
 } from '@material-ui/core';
 import { Delete as DeleteIcon } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
@@ -17,7 +19,9 @@ import AddCircleIcon from '@material-ui/icons/AddCircle';
 
 import { GroceryItem } from '../types';
 import { useAppDispatch, useAppSelector } from '../hooks';
-import { setGroceries } from '../groceriesSlice';
+import { setGroceries, updateGroceryItem, removeGroceryItem } from '../groceriesSlice';
+import { Shown } from '../Shown';
+import { LOCAL_STORAGE_KEY } from '../constants';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,15 +40,46 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const HomePage: FC = () => {
+  const [loading, setLoading] = useState(true);
   const groceries = useAppSelector((state) => state.groceries);
   const dispatch = useAppDispatch();
+
   const addItem = (item: GroceryItem) => {
     dispatch(setGroceries([...groceries, item]));
   };
+
+  const updateItem = (item: GroceryItem) => {
+    dispatch(updateGroceryItem(item));
+  };
+
+  const deleteItem = (item: GroceryItem) => {
+    dispatch(removeGroceryItem(item.id));
+  };
+
+  useEffect(() => {
+    // on page load, get the saved grocery items
+    try {
+      setLoading(true);
+      const data = window.localStorage.getItem(LOCAL_STORAGE_KEY);
+      if (data) {
+        const groceryItems = JSON.parse(data);
+        dispatch(setGroceries(groceryItems as GroceryItem[]));
+      }
+    } finally {
+      setLoading(false);
+    }
+  }, [dispatch]);
   return (
-    <Container maxWidth="sm">
-      <GroceryForm onItemAdd={addItem} />
-      <GroceryItemsList items={groceries} />
+    <Container maxWidth="sm" style={{ height: '100vh', position: 'relative' }}>
+      <Shown isVisible={loading}>
+        <Box style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+          <CircularProgress size="100px" />
+        </Box>
+      </Shown>
+      <Shown isVisible={!loading}>
+        <GroceryForm onItemAdd={addItem} />
+        <GroceryItemsList items={groceries} onUpdate={updateItem} onDelete={deleteItem} />
+      </Shown>
     </Container>
   );
 };
@@ -86,17 +121,29 @@ const GroceryForm: FC<{ onItemAdd: (item: GroceryItem) => void }> = ({ onItemAdd
   );
 };
 
-const GroceryItemsList: FC<{ items: GroceryItem[] }> = ({ items }) => {
+const GroceryItemsList: FC<{
+  items: GroceryItem[];
+  onUpdate: (item: GroceryItem) => void;
+  onDelete: (item: GroceryItem) => void;
+}> = ({ items, onUpdate, onDelete }) => {
+  const toggleCompleted = (groceryItem: GroceryItem) => {
+    onUpdate({
+      ...groceryItem,
+      isCompleted: !groceryItem.isCompleted,
+    });
+  };
+
+  const deleteItem = (item: GroceryItem) => onDelete(item);
   return (
     <>
       <List>
         {items.map((item) => {
           return (
-            <ListItem key={item.id} role={undefined} dense button>
+            <ListItem key={item.id} role={undefined} dense button onClick={() => toggleCompleted(item)}>
               <Checkbox edge="start" tabIndex={-1} disableRipple checked={item.isCompleted} />
               <ListItemText id={item.id} primary={item.name} />
               <ListItemSecondaryAction>
-                <IconButton edge="end" aria-label="delete">
+                <IconButton edge="end" aria-label="delete" onClick={() => deleteItem(item)}>
                   <DeleteIcon />
                 </IconButton>
               </ListItemSecondaryAction>
