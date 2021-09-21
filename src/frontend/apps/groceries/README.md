@@ -10,3 +10,8 @@ Go inside this directory and run `rm -rf node_modules/ && tar cvf - . | (cd /des
 
 ### Build production
 1. Run yarn build
+
+### Setup Redux/Redux Toolkit
+1. Install `react-redux`, `@reduxjs/toolkit` and `@types/react-redux`
+1. Create a store file and configure it with an empty reducer
+1. Then wrap your app in a Provider from redux and pass in the store
