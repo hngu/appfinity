@@ -37,10 +37,6 @@ calculator
 
 connect 4
 
-poll widget
-
-event emitter
-
 progress bar
 
 layout images in masonry format
