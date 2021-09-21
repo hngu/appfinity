@@ -25,3 +25,18 @@ Go inside this directory and run `rm -rf node_modules/ && tar cvf - . | (cd /des
 1. Then import your new reducer into the store, replacing the dummy empty reducer
 1. Finally, import app selector, app dispatch and the action creators into your app for use.
 1. This is what that looks like: https://github.com/hngu/appfinity/commit/e612ce93c96ca1eb55b8efb184a39366616301c5
+1. The redux store can have multiple slices of data. If you want to setup more state outside of groceries, for example, setup a new slice file and then import the slice's reducer into the store and add that reducer.
+```
+  export const store = configureStore({
+    reducer: {
+      sliceOne: sliceOneReducer,
+      sliceTwo: sliceTwoReducer,
+      ...
+      ...
+    }
+  });
+```
+
+### Redux/Redux Toolkit Notes
+- If you have a selector that is computationally intensive, you can use `createSelector` to create a memoized version of your selector.
+- If you have a redux store with multiple slices, you can access each slice via `store.sliceOne` or `store.sliceTwo` with `useAppSelector` function
