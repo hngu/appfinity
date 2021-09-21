@@ -1,14 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { ErrorBoundary, FallbackProps } from 'react-error-boundary';
-import { Button } from '@material-ui/core';
+import HomePage from './pages/HomePage';
 
-const App = () => (
-  <>
-    <h1>My React and TypeScript App!</h1>
-    <Button color="primary">Hello World</Button>
-  </>
-);
+const App = () => <HomePage />;
 
 function ErrorFallback({ error }: FallbackProps) {
   return (
