@@ -21,3 +21,4 @@ Go inside this directory and run `rm -rf node_modules/ && tar cvf - . | (cd /des
 1. In the slice file, setup the slice.
 1. Finally, export the slice's action creators (via slice.actions) and the slice's reducer via (slice.reducer)
 1. This is what we have for those steps: https://github.com/hngu/appfinity/commit/9bc065af04ca9443f89a07de31fcb6a2ab6bba35
+1. Then setup helper hooks to dispatch actions and select state. This is what you have to do: https://github.com/hngu/appfinity/commit/0595173167f8425e11561a8dd6985bb17f89a807

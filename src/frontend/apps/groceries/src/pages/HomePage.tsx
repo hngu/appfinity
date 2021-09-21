@@ -12,16 +12,19 @@ import {
 import { Delete as DeleteIcon } from '@material-ui/icons';
 import styled from 'styled-components/macro';
 import { GroceryItem } from '../types';
+import { useAppDispatch, useAppSelector } from '../hooks';
+import { setGroceries } from '../groceriesSlice';
 
 const HomePage: FC = () => {
-  const [items, setItems] = useState<GroceryItem[]>([]);
+  const groceries = useAppSelector((state) => state.groceries);
+  const dispatch = useAppDispatch();
   const addItem = (item: GroceryItem) => {
-    setItems((prevItems) => [...prevItems, item]);
+    dispatch(setGroceries([...groceries, item]));
   };
   return (
     <div>
       <GroceryForm onItemAdd={addItem} />
-      <GroceryItemsList items={items} />
+      <GroceryItemsList items={groceries} />
     </div>
   );
 };
