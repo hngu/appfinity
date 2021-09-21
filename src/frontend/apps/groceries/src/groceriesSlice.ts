@@ -19,6 +19,9 @@ const groceriesSlice = createSlice({
     setGroceries(state, action: PayloadAction<GroceryItem[]>) {
       state.groceries = action.payload;
     },
+    addGroceryItem(state, action: PayloadAction<GroceryItem>) {
+      state.groceries = [...state.groceries, action.payload];
+    },
   },
 });
 

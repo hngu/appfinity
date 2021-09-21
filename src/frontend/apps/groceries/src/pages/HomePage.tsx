@@ -1,6 +1,5 @@
 import React, { FC, useState } from 'react';
 import {
-  TextField,
   Button,
   List,
   ListItem,
@@ -8,12 +7,33 @@ import {
   Checkbox,
   ListItemSecondaryAction,
   IconButton,
+  Container,
+  Paper,
+  InputBase,
 } from '@material-ui/core';
 import { Delete as DeleteIcon } from '@material-ui/icons';
-import styled from 'styled-components/macro';
+import { makeStyles } from '@material-ui/core/styles';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+
 import { GroceryItem } from '../types';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import { setGroceries } from '../groceriesSlice';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(1),
+    paddingTop: '2px',
+    paddingBottom: '2px',
+    display: 'flex',
+    alignItems: 'center',
+    width: '100%',
+  },
+  input: {
+    marginLeft: theme.spacing(1),
+    flex: 1,
+  },
+}));
 
 const HomePage: FC = () => {
   const groceries = useAppSelector((state) => state.groceries);
@@ -22,23 +42,27 @@ const HomePage: FC = () => {
     dispatch(setGroceries([...groceries, item]));
   };
   return (
-    <div>
+    <Container maxWidth="sm">
       <GroceryForm onItemAdd={addItem} />
       <GroceryItemsList items={groceries} />
-    </div>
+    </Container>
   );
 };
 
 export default HomePage;
 
 const GroceryForm: FC<{ onItemAdd: (item: GroceryItem) => void }> = ({ onItemAdd }) => {
+  const classes = useStyles();
   const [item, setItem] = useState('');
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (!item.trim()) {
+      return '';
+    }
     onItemAdd({
       id: new Date().getTime().toString(),
-      name: item,
+      name: item.trim(),
       isCompleted: false,
       isDeleted: false,
     });
@@ -46,24 +70,21 @@ const GroceryForm: FC<{ onItemAdd: (item: GroceryItem) => void }> = ({ onItemAdd
   };
   return (
     <form onSubmit={onSubmit}>
-      <StyledGroceryTextField
-        variant="outlined"
-        size="small"
-        value={item}
-        onChange={(event) => setItem(event.target.value)}
-      />
-      <Button variant="contained" type="submit" color="primary">
-        Add
-      </Button>
+      <Paper className={classes.root}>
+        <InputBase
+          className={classes.input}
+          inputProps={{ 'aria-label': 'add grocery item' }}
+          value={item}
+          placeholder="Add Grocery Item"
+          onChange={(event) => setItem(event.target.value)}
+        />
+        <Button type="submit" color="primary">
+          <AddCircleIcon />
+        </Button>
+      </Paper>
     </form>
   );
 };
-
-const StyledGroceryTextField = styled(TextField)`
-  && {
-    margin-right: 10px;
-  }
-`;
 
 const GroceryItemsList: FC<{ items: GroceryItem[] }> = ({ items }) => {
   return (
