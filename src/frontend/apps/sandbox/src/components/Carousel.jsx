@@ -7,13 +7,14 @@ import styled from 'styled-components/macro';
  */
 const Carousel = ({ children, selectedIndex }) => {
   const [currentIndex, setCurrentIndex] = useState(typeof selectedIndex === 'number' ? selectedIndex : 0);
-  const selectedReactNode = children[currentIndex];
+  const realChildren = React.Children.toArray(children);
+  const selectedReactNode = realChildren[currentIndex];
 
-  if (children.length === 0) {
+  if (realChildren.length === 0) {
     return null;
   }
 
-  if (selectedIndex < 0 || selectedIndex >= children.length) {
+  if (selectedIndex < 0 || selectedIndex >= realChildren.length) {
     return null;
   }
 
@@ -21,12 +22,12 @@ const Carousel = ({ children, selectedIndex }) => {
     if (currentIndex - 1 >= 0) {
       setCurrentIndex(currentIndex - 1);
     } else {
-      setCurrentIndex(children.length - 1);
+      setCurrentIndex(realChildren.length - 1);
     }
   };
 
   const moveRight = () => {
-    if (currentIndex + 1 < children.length) {
+    if (currentIndex + 1 < realChildren.length) {
       setCurrentIndex(currentIndex + 1);
     } else {
       setCurrentIndex(0);
