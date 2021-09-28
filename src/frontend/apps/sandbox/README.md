@@ -19,8 +19,6 @@ Star Rating
 
 Design Popover
 
-Design Carousel https://github.com/brainhubeu/react-carousel
-
 Design Navbar
 
 Infinite Scroll

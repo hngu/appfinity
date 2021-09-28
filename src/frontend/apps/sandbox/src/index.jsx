@@ -10,6 +10,7 @@ import DragDropPage from './pages/DragDropPage';
 import VirtualListPage from './pages/VirtualListPage';
 import UtilsPage from './pages/UtilsPage';
 import AccordionPage from './pages/AccordionPage';
+import CarouselPage from './pages/CarouselPage';
 
 const Pages = [
   {
@@ -51,6 +52,11 @@ const Pages = [
     path: '/accordion',
     title: 'Accordion Page',
     component: AccordionPage,
+  },
+  {
+    path: '/carousel',
+    title: 'Carousel Page',
+    component: CarouselPage,
   },
 ];
 
