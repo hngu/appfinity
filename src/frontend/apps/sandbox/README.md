@@ -73,3 +73,21 @@ Template Builder
 Analytics
 
 Abandon Cart Email Design
+
+### Done
+- Dropdown
+  - How to close the menu when the user clicks outside of the menu
+  - How to position the menu below the dropdown button
+  - Concepts: useRef, useEffect cleanup runs after every update, using `.contains`
+- Carousel
+  - How to render each child element of the carousel individually
+  - Concepts: React.Children functions, Flex box
+- Accordion
+  - How to show a specific child and hide all other children
+  - Concepts: React Context to pass in the selected child, specifying a key for each child, height transitions
+- Promise Class
+  - How to handle chaining and catching errors
+- TypeAhead
+  - Same idea as Dropdown
+  - Also need handle focus/blur on the input field
+  - How to handle

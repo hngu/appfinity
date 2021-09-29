@@ -11,6 +11,7 @@ import VirtualListPage from './pages/VirtualListPage';
 import UtilsPage from './pages/UtilsPage';
 import AccordionPage from './pages/AccordionPage';
 import CarouselPage from './pages/CarouselPage';
+import NavBarPage from './pages/NavBarPage';
 
 const Pages = [
   {
@@ -57,6 +58,11 @@ const Pages = [
     path: '/carousel',
     title: 'Carousel Page',
     component: CarouselPage,
+  },
+  {
+    path: '/navbar',
+    title: 'Nav Bar Page',
+    component: NavBarPage,
   },
 ];
 
