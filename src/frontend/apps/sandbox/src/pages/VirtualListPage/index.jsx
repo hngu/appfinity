@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { loremIpsum } from 'lorem-ipsum';
+import styled from 'styled-components/macro';
 
 import './styles.css';
 
@@ -9,7 +10,7 @@ const VirtualListPage = () => {
   const list = useMemo(() => {
     return Array(rowCount)
       .fill()
-      .map((val, idx) => {
+      .map((_, idx) => {
         return {
           id: idx,
           name: 'John Doe',
@@ -27,7 +28,7 @@ const VirtualListPage = () => {
   return (
     <>
       <h2>Large Dataset</h2>
-      {list.map(renderRow)}
+      <VirtualList items={list} rowHeight={67} />
     </>
   );
 };
@@ -47,3 +48,16 @@ const renderRow = (item) => {
     </div>
   );
 };
+
+const VirtualList = ({ items, containerHeight = 400, rowHeight }) => {
+  const totalHeight = rowHeight * items.length;
+  const visibleItemCount = Math.ceil(containerHeight / rowHeight);
+  const visibleItems = items.slice(0, visibleItemCount);
+  return <ListContainer containerHeight={containerHeight}>{visibleItems.map(renderRow)}</ListContainer>;
+};
+
+const ListContainer = styled.div`
+  overflow: auto;
+  height: ${(props) => props.containerHeight}px;
+  border: 1px solid black;
+`;

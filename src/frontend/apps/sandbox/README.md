@@ -19,8 +19,6 @@ Star Rating
 
 Design Popover
 
-Design Navbar
-
 Infinite Scroll
 
 Tictactoe
