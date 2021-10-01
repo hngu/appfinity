@@ -16,6 +16,7 @@ import {
 import { Delete as DeleteIcon } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
+import styled from 'styled-components/macro';
 
 import { GroceryItem } from '../types';
 import { useAppDispatch, useAppSelector } from '../hooks';
@@ -62,8 +63,8 @@ const HomePage: FC = () => {
       setLoading(true);
       const data = window.localStorage.getItem(LOCAL_STORAGE_KEY);
       if (data) {
-        const groceryItems = JSON.parse(data);
-        dispatch(setGroceries(groceryItems as GroceryItem[]));
+        const state = JSON.parse(data);
+        dispatch(setGroceries(state?.groceries || ([] as GroceryItem[])));
       }
     } finally {
       setLoading(false);
@@ -141,7 +142,7 @@ const GroceryItemsList: FC<{
           return (
             <ListItem key={item.id} role={undefined} dense button onClick={() => toggleCompleted(item)}>
               <Checkbox edge="start" tabIndex={-1} disableRipple checked={item.isCompleted} />
-              <ListItemText id={item.id} primary={item.name} />
+              <StyledListItemText $isCompleted={item.isCompleted} id={item.id} primary={item.name} />
               <ListItemSecondaryAction>
                 <IconButton edge="end" aria-label="delete" onClick={() => deleteItem(item)}>
                   <DeleteIcon />
@@ -154,3 +155,7 @@ const GroceryItemsList: FC<{
     </>
   );
 };
+
+const StyledListItemText = styled(ListItemText)<{ $isCompleted?: boolean }>`
+  ${(props) => (props.$isCompleted ? 'text-decoration: line-through;' : '')}
+`;

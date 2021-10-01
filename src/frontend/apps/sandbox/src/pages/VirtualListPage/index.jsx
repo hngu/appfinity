@@ -51,9 +51,16 @@ const renderRow = (item) => {
 
 const VirtualList = ({ items, containerHeight = 400, rowHeight }) => {
   const totalHeight = rowHeight * items.length;
-  const visibleItemCount = Math.ceil(containerHeight / rowHeight);
+  // show visible items with 20 item buffer
+  const visibleItemCount = Math.ceil(containerHeight / rowHeight) + 20;
+  const leftOverHeight = totalHeight - visibleItemCount * rowHeight;
   const visibleItems = items.slice(0, visibleItemCount);
-  return <ListContainer containerHeight={containerHeight}>{visibleItems.map(renderRow)}</ListContainer>;
+  return (
+    <ListContainer containerHeight={containerHeight}>
+      {visibleItems.map(renderRow)}
+      <div style={{ height: `${leftOverHeight}px` }}></div>
+    </ListContainer>
+  );
 };
 
 const ListContainer = styled.div`
