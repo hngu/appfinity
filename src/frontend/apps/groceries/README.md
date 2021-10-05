@@ -12,7 +12,6 @@ Go inside this directory and run `rm -rf node_modules/ && tar cvf - . | (cd /des
 1. Run yarn build
 
 ### TODOS
-- Save deleted grocery items
 - Show deleted grocery items
 - Permanent delete grocery items
 - Search suggest deleted grocery items
