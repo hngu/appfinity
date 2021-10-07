@@ -12,6 +12,7 @@ import UtilsPage from './pages/UtilsPage';
 import AccordionPage from './pages/AccordionPage';
 import CarouselPage from './pages/CarouselPage';
 import NavBarPage from './pages/NavBarPage';
+import InlineEditPage from './pages/InlineEditPage';
 
 const Pages = [
   {
@@ -63,6 +64,11 @@ const Pages = [
     path: '/navbar',
     title: 'Nav Bar Page',
     component: NavBarPage,
+  },
+  {
+    path: '/inline-edit',
+    title: 'Inline Edit Page',
+    component: InlineEditPage,
   },
 ];
 

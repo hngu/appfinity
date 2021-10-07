@@ -47,7 +47,15 @@ const groceriesSlice = createSlice({
       state.groceries = [...state.groceries.slice(0, index), ...state.groceries.slice(index + 1)];
       const isFoundInDeleted = state.pastGroceries.find((item) => item.name === item.name);
       if (!isFoundInDeleted) {
-        state.pastGroceries = [...state.pastGroceries, item];
+        state.pastGroceries = [
+          ...state.pastGroceries,
+          {
+            id: item.id,
+            name: item.name,
+            isCompleted: false,
+            isDeleted: true,
+          },
+        ];
       }
     },
   },

@@ -88,4 +88,9 @@ Abandon Cart Email Design
 - TypeAhead
   - Same idea as Dropdown
   - Also need handle focus/blur on the input field
-  - How to handle
+  - Use debounce/throttle for key press
+- Inline Edit Component
+  - You only want to save when there is a value. If there isn't a value, then it is hard to see that the text is editable
+  - Using CSS to make the input look like a regular text, then on hover indicate it is editable. Clicking should make it editable
+  - Using event.key to detect "Enter" on keydown
+  - Using an editable state so that you only get updates when the text has finished editing.
