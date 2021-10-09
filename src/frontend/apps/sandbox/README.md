@@ -41,6 +41,8 @@ flipable flash cards
 
 modal
 
+test out redux store update (does any update cause selectors to update)?
+
 stepper https://ishadeed.com/article/stepper-component-html-css/
 
 ### Systems

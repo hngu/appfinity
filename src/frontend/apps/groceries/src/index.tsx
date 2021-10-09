@@ -2,12 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { ErrorBoundary, FallbackProps } from 'react-error-boundary';
 import { Provider } from 'react-redux';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
 import { store } from './store';
 import HomePage from './pages/HomePage';
 
 const App = () => (
   <Provider store={store}>
-    <HomePage />
+    <Router>
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+      </Switch>
+    </Router>
   </Provider>
 );
 

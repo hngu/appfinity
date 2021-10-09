@@ -12,10 +12,10 @@ Go inside this directory and run `rm -rf node_modules/ && tar cvf - . | (cd /des
 1. Run yarn build
 
 ### TODOS
-- Show deleted grocery items
+- Show deleted grocery items in a new page
 - Permanent delete grocery items
 - Search suggest deleted grocery items
-- Create a modal for adding items instead
+- Create a page for adding items instead
 - Clear everything (localStorage and redux) with confirmation modal
 - PWA this app
 - Deploy
