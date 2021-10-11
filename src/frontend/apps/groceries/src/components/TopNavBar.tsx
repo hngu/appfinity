@@ -19,7 +19,7 @@ const TopNavBar: FC<{ onClick: () => void }> = ({ onClick }) => {
   const classes = useStyles();
 
   return (
-    <AppBar position="static">
+    <AppBar position="fixed">
       <Toolbar>
         <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={onClick}>
           <MenuIcon />

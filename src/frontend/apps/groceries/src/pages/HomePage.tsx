@@ -1,6 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import { Container, CircularProgress, Box, Typography, Drawer, IconButton } from '@material-ui/core';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import { Container, CircularProgress, Box, Typography } from '@material-ui/core';
 
 import { GroceryItem } from '../types';
 import { useAppDispatch, useAppSelector } from '../hooks';
@@ -9,11 +8,9 @@ import { Shown } from '../Shown';
 import { LOCAL_STORAGE_KEY } from '../constants';
 import GroceryItemsList from '../components/GroceryItemslist';
 import GroceryForm from '../components/GroceryForm';
-import TopNavBar from '../components/TopNavBar';
 
 const HomePage: FC = () => {
   const [loading, setLoading] = useState(true);
-  const [open, setOpen] = React.useState(false);
   const groceries = useAppSelector((state) => state.groceries);
   const dispatch = useAppDispatch();
 
@@ -27,14 +24,6 @@ const HomePage: FC = () => {
 
   const deleteItem = (item: GroceryItem) => {
     dispatch(removeGroceryItem(item.id));
-  };
-
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
   };
 
   useEffect(() => {
@@ -52,13 +41,6 @@ const HomePage: FC = () => {
   }, [dispatch]);
   return (
     <>
-      <TopNavBar onClick={handleDrawerOpen} />
-      <Drawer variant="persistent" open={open}>
-        Test
-        <IconButton onClick={handleDrawerClose}>
-          <ChevronLeftIcon />
-        </IconButton>
-      </Drawer>
       <Container maxWidth="sm" style={{ height: '100vh', position: 'relative', marginTop: '15px' }}>
         <Shown isVisible={loading}>
           <Box style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
