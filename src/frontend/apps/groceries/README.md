@@ -12,7 +12,6 @@ Go inside this directory and run `rm -rf node_modules/ && tar cvf - . | (cd /des
 1. Run yarn build
 
 ### TODOS
-- Clear everything (localStorage and redux) with confirmation modal
 - Search suggest deleted grocery items
 - Create a page for adding items instead
 - PWA this app

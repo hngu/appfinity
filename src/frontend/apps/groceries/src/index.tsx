@@ -12,6 +12,7 @@ import { store } from './store';
 import HomePage from './pages/HomePage';
 import RemovedItemsPage from './pages/RemovedItemsPage';
 import { makeStyles } from '@material-ui/core/styles';
+import { SettingsPage } from './pages/SettingsPage';
 
 const useStyles = makeStyles((theme) => ({
   drawerHeader: {
@@ -50,6 +51,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/removed" component={RemovedItemsPage} />
+          <Route exact path="/settings" component={SettingsPage} />
         </Switch>
       </Shown>
     </Router>
