@@ -24,10 +24,6 @@ const PATHS: Path[] = [
     name: 'Settings',
     url: '/settings',
   },
-  {
-    name: 'Add Item',
-    url: '/add',
-  },
 ];
 
 const useStyles = makeStyles((theme) => ({

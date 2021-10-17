@@ -58,11 +58,38 @@ const groceriesSlice = createSlice({
         ];
       }
     },
+    permanentDeleteItems(state, action: PayloadAction<string[]>) {
+      const removeIds = action.payload;
+      state.pastGroceries = state.pastGroceries.filter((item) => !removeIds.some((removeId) => removeId === item.id));
+    },
+    moveDeletedItemsToList(state, action: PayloadAction<string[]>) {
+      const removeIds = action.payload;
+      const movedItems: GroceryItem[] = [];
+      const stayItems: GroceryItem[] = [];
+
+      state.pastGroceries.forEach((pastItem) => {
+        if (removeIds.some((removeId) => removeId === pastItem.id)) {
+          movedItems.push(pastItem);
+        } else {
+          stayItems.push(pastItem);
+        }
+      });
+
+      state.pastGroceries = stayItems;
+      state.groceries = [...state.groceries, ...movedItems];
+    },
   },
 });
 
 // 4. export the action creators
-export const { setGroceries, updateGroceryItem, removeGroceryItem, addGroceryItem } = groceriesSlice.actions;
+export const {
+  setGroceries,
+  updateGroceryItem,
+  removeGroceryItem,
+  addGroceryItem,
+  permanentDeleteItems,
+  moveDeletedItemsToList,
+} = groceriesSlice.actions;
 
 // 5. export the slice reducer
 export default groceriesSlice.reducer;
