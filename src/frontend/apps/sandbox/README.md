@@ -45,6 +45,8 @@ test out redux store update (does any update cause selectors to update)?
 
 stepper https://ishadeed.com/article/stepper-component-html-css/
 
+typeahead with race conditions https://medium.com/hackernoon/avoiding-race-conditions-when-fetching-data-with-react-hooks-220d6fd0f663
+
 ### Systems
 Coupon Creator
 - Coupon Name
