@@ -4,9 +4,11 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import ESLintPlugin from 'eslint-webpack-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 const config: webpack.Configuration = {
   mode: 'production',
+  devtool: 'source-map',
   entry: './src/index.tsx',
   output: {
     path: path.resolve(__dirname, 'build'),
@@ -31,6 +33,7 @@ const config: webpack.Configuration = {
     extensions: ['.tsx', '.ts', '.js'],
   },
   plugins: [
+    new BundleAnalyzerPlugin(),
     new HtmlWebpackPlugin({
       template: 'src/index.html',
     }),
