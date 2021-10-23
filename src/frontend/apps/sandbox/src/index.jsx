@@ -13,6 +13,7 @@ import AccordionPage from './pages/AccordionPage';
 import CarouselPage from './pages/CarouselPage';
 import NavBarPage from './pages/NavBarPage';
 import InlineEditPage from './pages/InlineEditPage';
+import PokedexPage from './pages/PokedexPage';
 
 const Pages = [
   {
@@ -69,6 +70,11 @@ const Pages = [
     path: '/inline-edit',
     title: 'Inline Edit Page',
     component: InlineEditPage,
+  },
+  {
+    path: '/pokedex',
+    title: 'Pokedex Page',
+    component: PokedexPage,
   },
 ];
 
