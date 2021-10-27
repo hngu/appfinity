@@ -43,6 +43,8 @@ modal
 
 stepper https://ishadeed.com/article/stepper-component-html-css/
 
+image intersectionobserver component
+
 
 ### Systems
 Coupon Creator

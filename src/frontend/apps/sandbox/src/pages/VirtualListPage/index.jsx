@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
 import { loremIpsum } from 'lorem-ipsum';
-import styled from 'styled-components/macro';
 
 import './styles.css';
+import styled from 'styled-components/macro';
 
 const rowCount = 1000;
 
@@ -28,43 +28,43 @@ const VirtualListPage = () => {
   return (
     <>
       <h2>Large Dataset</h2>
-      <VirtualList items={list} rowHeight={67} />
+      <VirtualScroll list={list} height={300} childHeight={60} />
     </>
   );
 };
 
-export default VirtualListPage;
+const VirtualScroll = ({ list, height, childHeight, renderAhead = 20 }) => {
+  // get the number of visible children based on height and child height
+  // then add (2 * renderAhead) for padding above and below the viewport
+  const visibleNodeCount = Math.ceil(height / childHeight) + 2 * renderAhead;
 
-const renderRow = (item) => {
+  const visibleList = list.slice(0, visibleNodeCount);
+  const totalHeight = list.length * childHeight;
   return (
-    <div key={item.id} className="row">
-      <div className="image">
-        <img src={item.image} alt="" />
-      </div>
-      <div className="content">
-        <div>{item.name}</div>
-        <div>{item.text}</div>
-      </div>
-    </div>
+    <ScrollContainer $height={height}>
+      <Viewport style={{ height: totalHeight }}>
+        {visibleList.map((item) => (
+          <div key={item.id} style={{ height: childHeight + 'px', border: '1px solid black' }}>
+            <img src={item.image} alt="placeholder" />
+            <div>
+              {item.text} {item.id + 1}
+            </div>
+          </div>
+        ))}
+      </Viewport>
+    </ScrollContainer>
   );
 };
 
-const VirtualList = ({ items, containerHeight = 400, rowHeight }) => {
-  const totalHeight = rowHeight * items.length;
-  // show visible items with 20 item buffer
-  const visibleItemCount = Math.ceil(containerHeight / rowHeight) + 20;
-  const leftOverHeight = totalHeight - visibleItemCount * rowHeight;
-  const visibleItems = items.slice(0, visibleItemCount);
-  return (
-    <ListContainer containerHeight={containerHeight}>
-      {visibleItems.map(renderRow)}
-      <div style={{ height: `${leftOverHeight}px` }}></div>
-    </ListContainer>
-  );
-};
-
-const ListContainer = styled.div`
+const ScrollContainer = styled.div`
   overflow: auto;
-  height: ${(props) => props.containerHeight}px;
-  border: 1px solid black;
+  position: relative;
+  height: ${(props) => (props.$height ? props.$height + 'px' : 'auto')};
 `;
+
+const Viewport = styled.div`
+  position: relative;
+  overflow: hidden;
+`;
+
+export default VirtualListPage;
