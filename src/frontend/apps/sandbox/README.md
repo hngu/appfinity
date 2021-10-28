@@ -19,8 +19,6 @@ Star Rating
 
 Design Popover
 
-Infinite Scroll
-
 Tictactoe
 
 calendar for any month like date picker
@@ -97,3 +95,11 @@ Abandon Cart Email Design
   - Using CSS to make the input look like a regular text, then on hover indicate it is editable. Clicking should make it editable
   - Using event.key to detect "Enter" on keydown
   - Using an editable state so that you only get updates when the text has finished editing.
+- Infinite Scroll
+  - Based on static height container, and static child heights
+  - You need to compute the starting node, the number of visible nodes with padding above and below
+  - You have one fixed height container
+  - One viewport container inside that is the total height of all child nodes
+  - One wrapper container that can be moved within the viewport container
+  - Finally, the child nodes are rendered in the wrapper container
+  - Need to have scroll aware hook
