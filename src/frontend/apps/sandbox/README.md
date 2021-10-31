@@ -19,8 +19,6 @@ Star Rating
 
 Design Popover
 
-Tictactoe
-
 calendar for any month like date picker
 
 data grid (search, sort)
@@ -103,3 +101,9 @@ Abandon Cart Email Design
   - One wrapper container that can be moved within the viewport container
   - Finally, the child nodes are rendered in the wrapper container
   - Need to have scroll aware hook
+- TicTacToe
+  - To determine winner, the algorithm is to check current row, current column, and both diagonals
+  - Use `:nth-child()` to add borders
+  - How to reset the board? Just copy the current board, then set all cells to blanks
+  - Do not allow clicking if there is no winner, there is a winner, or the cell is already occupied
+  - CSS grid

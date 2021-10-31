@@ -14,6 +14,7 @@ import CarouselPage from './pages/CarouselPage';
 import NavBarPage from './pages/NavBarPage';
 import InlineEditPage from './pages/InlineEditPage';
 import PokedexPage from './pages/PokedexPage';
+import { TicTacToePage } from './pages/TicTacToePage';
 
 const Pages = [
   {
@@ -75,6 +76,11 @@ const Pages = [
     path: '/pokedex',
     title: 'Pokedex Page',
     component: PokedexPage,
+  },
+  {
+    path: '/tictactoe',
+    title: 'Tic-Tac-Toe Page',
+    component: TicTacToePage,
   },
 ];
 
