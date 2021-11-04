@@ -1,0 +1,28 @@
+{
+  "name": "script-starter-pack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage",
+    "test:watch": "jest --coverage --watchAll",
+    "build": "tsc",
+    "build:watch": "onchange 'src/**/*.ts' -- npm run build",
+    "view:coverage": "serve coverage/lcov-report",
+    "clean": "rm -rf coverage/ build/",
+    "start": "node src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/jest": "^27.0.2",
+    "@types/node": "^16.11.6",
+    "@types/source-map-support": "^0.5.4",
+    "jest": "^27.3.1",
+    "onchange": "^7.1.0",
+    "serve": "^12.0.1",
+    "source-map-support": "^0.5.20",
+    "ts-jest": "^27.0.7",
+    "typescript": "^4.4.4"
+  }
+}
