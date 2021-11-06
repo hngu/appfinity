@@ -107,3 +107,9 @@ Abandon Cart Email Design
   - How to reset the board? Just copy the current board, then set all cells to blanks
   - Do not allow clicking if there is no winner, there is a winner, or the cell is already occupied
   - CSS grid
+- Calendar
+  - To get the list of days for a month:
+  - Build grid for calendar
+  - Render grid for calendar
+  - Checking if a date is valid
+  - Handling text input for numeric values - what if the user enters blank?
