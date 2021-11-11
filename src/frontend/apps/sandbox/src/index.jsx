@@ -16,6 +16,7 @@ import InlineEditPage from './pages/InlineEditPage';
 import PokedexPage from './pages/PokedexPage';
 import { TicTacToePage } from './pages/TicTacToePage';
 import { CalendarPage } from './pages/CalendarPage';
+import { RenderPage } from './pages/RenderPage';
 
 const Pages = [
   {
@@ -87,6 +88,11 @@ const Pages = [
     path: '/calendar',
     title: 'Calendar Page',
     component: CalendarPage,
+  },
+  {
+    path: '/render',
+    title: 'Render Page',
+    component: RenderPage,
   },
 ];
 

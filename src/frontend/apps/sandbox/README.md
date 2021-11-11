@@ -19,8 +19,6 @@ Star Rating
 
 Design Popover
 
-calendar for any month like date picker
-
 data grid (search, sort)
 
 analog clock
@@ -109,7 +107,13 @@ Abandon Cart Email Design
   - CSS grid
 - Calendar
   - To get the list of days for a month:
+    - Create a new date with the current year and month, and day 1.
+    - Add a day until the month changes
   - Build grid for calendar
+    - I decided to use a grid. I needed to fill it with empty cells for leading days and trailing days
   - Render grid for calendar
+    - Render row which displays a week
+    - Use flexbox for the rows
   - Checking if a date is valid
   - Handling text input for numeric values - what if the user enters blank?
+  - To subtract days: `d.setDate(d.getDate() - 1)`
