@@ -9,7 +9,6 @@
 1. Run yarn build
 
 ### Sandbox ideas
-https://bigfrontend.dev/
 https://medium.com/@manojsingh047/understanding-frontend-security-ff6585395534
 
 https://learnk8s.io/kubernetes-for-developers
@@ -38,6 +37,8 @@ modal
 stepper https://ishadeed.com/article/stepper-component-html-css/
 
 image intersectionobserver component
+
+https://ishadeed.com/article/facebook-messenger-chat-component/
 
 
 ### Systems
@@ -117,3 +118,11 @@ Abandon Cart Email Design
   - Checking if a date is valid
   - Handling text input for numeric values - what if the user enters blank?
   - To subtract days: `d.setDate(d.getDate() - 1)`
+- React Render
+  - In normal rendering, if the parent component re-renders, its children will also rerender!
+  - use `React.memo` or `useMemo` to memoize expensive child components and only rerender when props change.
+  - Use `useMemo` to cache an expensive calculation result. It can take a list of dependencies to update the calculation when the dependencies change
+  - However, your component should still work without `useMemo`. React can choose to forget memoized values.
+- Use `useCallback` to cache functions or callbacks so your component doesn't re-render when a new callback is created.
+- The React component right under your context provider should probably use `React.memo`
+- All consumers that are descendants of a Provider will re-render whenever the Provider's value props change
