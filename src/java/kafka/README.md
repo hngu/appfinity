@@ -17,5 +17,20 @@ To create a topic, run `kafka-topics --bootstrap-server localhost:9092 --topic f
 To view topics: `kafka-topics --bootstrap-server localhost:9092 --list`
 
 To describe a topic: `kafka-topics --bootstrap-server localhost:9092 --topic first_topic --describe`
+```
+Topic: first_topic	TopicId: BOW7IZ5pSYWfMWxDW6CF2w	PartitionCount: 3	ReplicationFactor: 1	Configs: segment.bytes=1073741824
+	Topic: first_topic	Partition: 0	Leader: 0	Replicas: 0	Isr: 0
+	Topic: first_topic	Partition: 1	Leader: 0	Replicas: 0	Isr: 0
+	Topic: first_topic	Partition: 2	Leader: 0	Replicas: 0	Isr: 0
+```
+It displays:
+- Topic name
+- number of partitions
+- replication factor
+- Each topic's partition number, leader (broker id), replica id, Isr (broker id)
 
 To delete a topic: `kafka-topics --bootstrap-server localhost:9092 --topic second_topic --delete`
+
+The base command to produce to a topic: `kafka-console-producer`
+
+The base command to consume from a topic: `kafka-console-consumer`
