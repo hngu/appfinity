@@ -123,6 +123,7 @@ Abandon Cart Email Design
   - use `React.memo` or `useMemo` to memoize expensive child components and only rerender when props change.
   - Use `useMemo` to cache an expensive calculation result. It can take a list of dependencies to update the calculation when the dependencies change
   - However, your component should still work without `useMemo`. React can choose to forget memoized values.
-- Use `useCallback` to cache functions or callbacks so your component doesn't re-render when a new callback is created.
-- The React component right under your context provider should probably use `React.memo`
-- All consumers that are descendants of a Provider will re-render whenever the Provider's value props change
+  - Use `useCallback` to cache functions or callbacks so your component doesn't re-render when a new callback is created.
+  - The React component right under your context provider should probably use `React.memo`
+  - All consumers that are descendants of a Provider will re-render whenever the Provider's value props change
+  - React updates are done like this: `render/re-render -> reconciliation -> commit`

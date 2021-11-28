@@ -32,5 +32,27 @@ It displays:
 To delete a topic: `kafka-topics --bootstrap-server localhost:9092 --topic second_topic --delete`
 
 The base command to produce to a topic: `kafka-console-producer`
+- `kafka-console-producer --bootstrap-server localhost:9092 --topic first_topic`
+- this will allow you enter a message per line
+- hit Ctrl-C to quit
+- to have producer acknowledge: `kafka-console-producer --bootstrap-server localhost:9092 --topic first_topic --producer-property acks=all`
+- if you produce a message to a new topic, it will create that topic automatically with defaults. This is ok. However, always try to create your topic before producing a message.
+- default settings are in server.properties file
 
 The base command to consume from a topic: `kafka-console-consumer`
+- `kafka-console-consumer --bootstrap-server localhost:9092 --topic first_topic`
+- The command above only reads new messages
+- This command reads from the beginning: `kafka-console-consumer --bootstrap-server localhost:9092 --topic first_topic --from-beginning`
+- the command above will output messages from order you don't expect
+
+Consumer group
+- You can have a set of consumers read data from a producer as one. This will allow you to load balance messages across a group of consumers.
+- `kafka-console-consumer --bootstrap-server localhost:9092 --topic first_topic --group my-first-group`
+- Now you can have 1 or more consumers work together to share message load by a group name.
+- You can also have a group of consumers read messages from the beginning:
+- `kafka-console-consumer --bootstrap-server localhost:9092 --topic first_topic --group my-first-group --from-beginning`
+- This will allow you to read the messages from the beginning, and if the consumers fail and restart, they can read the messages from where they left off.
+
+Kafka Consumer Group
+- `kafka-consumer-groups --bootstrap-server localhost:9092 --list`
+- `kafka-consumer-groups --bootstrap-server localhost:9092 --describe --group my-first-group`
