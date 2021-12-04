@@ -56,3 +56,24 @@ Consumer group
 Kafka Consumer Group
 - `kafka-consumer-groups --bootstrap-server localhost:9092 --list`
 - `kafka-consumer-groups --bootstrap-server localhost:9092 --describe --group my-first-group`
+- To have a group re-read from an offset, use the `--reset-offsets` flag
+- EX: `kafka-consumer-groups --bootstrap-server localhost:9092 --group my-first-group --reset-offsets --to-earliest --execute --topic first_topic`
+- Then you can start the consumer and it will read from the beginning
+
+Other CLI commands:
+```
+
+# Producer with keys
+
+kafka-console-producer --broker-list 127.0.0.1:9092 --topic first_topic --property parse.key=true --property key.separator=,
+> key,value
+> another key,another value
+
+# Consumer with keys
+
+kafka-console-consumer --bootstrap-server 127.0.0.1:9092 --topic first_topic --from-beginning --property print.key=true --property key.separator=,
+
+```
+
+- There is a CLI replacement called kafkakat or kcat
+
