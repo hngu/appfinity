@@ -14,3 +14,9 @@ Go inside this directory and run `rm -rf node_modules/ && tar cvf - . | (cd /des
 ### Setup react router
 - Install dependencies: `yarn add react-router-dom @types/react-router-dom`
 - [tutorial](https://www.robinwieruch.de/react-router/)
+
+### Other useful packages
+- Redux
+- Redux Toolkit Query
+- MUI
+- [usehooks](https://www.npmjs.com/package/usehooks-ts)
