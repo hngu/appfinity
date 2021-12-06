@@ -16,7 +16,7 @@
   },
   "scripts": {
     "start": "webpack serve --config webpack.dev.config.ts",
-    "build": "webpack --config webpack.prod.config.ts",
+    "build": "rm -rf build/ && webpack --config webpack.prod.config.ts",
     "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
     "typecheck": "tsc --noEmit"
   },
