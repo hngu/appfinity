@@ -7,10 +7,10 @@
     "test": "jest --coverage",
     "test:watch": "jest --coverage --watchAll",
     "build": "tsc",
-    "build:watch": "onchange 'src/**/*.ts' -- npm run build",
+    "build:watch": "onchange 'src/**/*.ts' -- yarn run build",
     "view:coverage": "serve coverage/lcov-report",
     "clean": "rm -rf coverage/ build/",
-    "start": "node src/index.js"
+    "start": "node build/index.js"
   },
   "author": "",
   "license": "ISC",
