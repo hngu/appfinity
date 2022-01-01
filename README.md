@@ -17,6 +17,7 @@ A collection of apps I love to build!
 - graphql
 - commitizen/husky for semantic release
 - google s2/uber h3
+- GraphQL
 
 
 ## DBs to Try:
