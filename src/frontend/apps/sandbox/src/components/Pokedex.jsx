@@ -38,6 +38,7 @@ const Pokedex = () => {
 
   useEffect(() => {
     // second way - use a local variable flag
+    // you can also use this same idea with refs
     let fetching = true;
     const fetchPokemon = async () => {
       if (!selectedPokemon) {

@@ -127,3 +127,7 @@ Abandon Cart Email Design
   - The React component right under your context provider should probably use `React.memo`
   - All consumers that are descendants of a Provider will re-render whenever the Provider's value props change
   - React updates are done like this: `render/re-render -> reconciliation -> commit`
+  - React hooks
+    - `useImperativeHandle`
+    - `useLayoutEffect`
+    - `useDebugValue`

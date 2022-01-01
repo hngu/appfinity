@@ -1,3 +1,6 @@
+### TypeScript + React
+This is a FE starter pack with TypeScript + React as the main technologies
+
 ### Copying
 Go inside this directory and run `rm -rf node_modules/ && tar cvf - . | (cd /dest/dir; tar xvf -)`
 
@@ -20,3 +23,6 @@ Go inside this directory and run `rm -rf node_modules/ && tar cvf - . | (cd /des
 - Redux Toolkit Query
 - MUI
 - [usehooks](https://www.npmjs.com/package/usehooks-ts)
+- Jest
+- RTL
+- Cypress
