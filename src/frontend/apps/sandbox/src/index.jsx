@@ -17,6 +17,9 @@ import PokedexPage from './pages/PokedexPage';
 import { TicTacToePage } from './pages/TicTacToePage';
 import { CalendarPage } from './pages/CalendarPage';
 import { RenderPage } from './pages/RenderPage';
+import { CalculatorPage } from './pages/CalculatorPage';
+import { AnalogClockPage } from './pages/AnalogClockPage';
+import { ConnectFourPage } from './pages/ConnectFourPage';
 
 const Pages = [
   {
@@ -93,6 +96,21 @@ const Pages = [
     path: '/render',
     title: 'Render Page',
     component: RenderPage,
+  },
+  {
+    path: '/calculator',
+    title: 'Calculator Page',
+    component: CalculatorPage,
+  },
+  {
+    path: '/analog-clock',
+    title: 'Analog Clock Page',
+    component: AnalogClockPage,
+  },
+  {
+    path: '/connect-four',
+    title: 'Connect 4 Page',
+    component: ConnectFourPage,
   },
 ];
 
