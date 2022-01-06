@@ -22,8 +22,6 @@ data grid (search, sort)
 
 analog clock
 
-calculator
-
 connect 4
 
 progress bar
@@ -131,3 +129,22 @@ Abandon Cart Email Design
     - `useImperativeHandle`
     - `useLayoutEffect`
     - `useDebugValue`
+  - Calculator
+    - Using CSS grid to build the UI
+    - Need to handle edge cases like using operators one after another, hitting equals multiple times
+    - Need to store two states: what to display and the current expression
+  - React Best Practices
+    - Use absolute paths
+    - Have components into their own folders (the component file, the test file, and index file)
+    - Wrap external components (so refactoring or replacing is easier)
+    - Group files by route/domain. This will tell you more about the project rather than a components folder
+    - Use data fetching libraries like react query
+    - use react prop types and default props (unless you are using typescript then no need)
+    - avoid nested render functions. They are better off in their own component file
+    - avoid HOC and render props. Use hooks instead.
+  - Medium Article FE [Exercise] (https://betterprogramming.pub/my-favorite-coding-interview-task-for-frontened-developers-f3e984fa49e2)
+    - Single responsibility useEffect (if you can break up a useEffect for better readability then do it)
+    - Using requestAnimationFrame instead of throttle or debounce
+    - Do not call setState when the component is unmounted
+    -
+

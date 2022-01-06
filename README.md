@@ -24,3 +24,6 @@ A collection of apps I love to build!
 - Neo4j
 - Cockroach DB
 - Influx DB
+
+## Notes
+-
