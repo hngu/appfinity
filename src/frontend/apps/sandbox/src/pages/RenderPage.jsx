@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 
 export const RenderPage = () => {
   const [_, setCounter] = useState(0);
@@ -12,6 +12,18 @@ export const RenderPage = () => {
       </div>
       <div>
         <UseCallbackExample />
+      </div>
+      <div>
+        <h2>React Context</h2>
+        <div>
+          <ParentComponent>
+            <ChildComponent />
+          </ParentComponent>
+        </div>
+      </div>
+      <div>
+        <h2>Add Delete Items</h2>
+        <AddDeleteItems />
       </div>
     </>
   );
@@ -81,4 +93,54 @@ const ExpensiveComponent = ({ callback }) => {
 
   for (let i = 0; i < 1000000000; i++) {}
   return <button onClick={callback}>Click me</button>;
+};
+
+const ParentChildContext = React.createContext();
+
+const ParentComponent = ({ children }) => {
+  const [counter, setCounter] = useState(0);
+  const value = {
+    counter,
+    setCounter,
+  };
+  return <ParentChildContext.Provider value={value}>{children}</ParentChildContext.Provider>;
+};
+
+const ChildComponent = () => {
+  const { counter, setCounter } = useContext(ParentChildContext);
+  return (
+    <div>
+      <button onClick={() => setCounter((c) => c + 1)}>{counter}</button>
+    </div>
+  );
+};
+
+const AddDeleteItems = () => {
+  const [list, setList] = useState([]);
+  const [text, setText] = useState('');
+
+  const addItem = () => {
+    setList([...list, text]);
+    setText('');
+  };
+
+  const removeItem = (index) => {
+    setList(list.filter((_, i) => i !== index));
+  };
+
+  return (
+    <>
+      <div>
+        <input type="text" value={text} onChange={(event) => setText(event.target.value)} />
+        <button onClick={addItem}>Add</button>
+      </div>
+      <ul>
+        {list.map((item, index) => (
+          <li key={index} onClick={() => removeItem(index)}>
+            {item}
+          </li>
+        ))}
+      </ul>
+    </>
+  );
 };

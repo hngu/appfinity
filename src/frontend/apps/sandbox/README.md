@@ -68,6 +68,27 @@ Analytics
 
 Abandon Cart Email Design
 
+Design a system for an analytics app similar to Google Analytics where a client will place a segment of our code onto each of their websites' pages, and we will provide analytics for things such as an audience behavior / user-flow [see attached screenshot, below], an active element heat-map per page (what the user focused/clicked on), as well as other insightful data on an admin site which the client will need credentials to view.
+
+
+Please design a notification system based on the markup and focus on FE
+What if the status needs to be shared among multiple components?
+There may be hundreds of notifications, how can we load them to keep a good UX?
+How about the “mark all as read” doing now?
+What if the notifications are coming from multiple sources?
+What if we want the users to get the updates on notifications without opening up the bell?
+
+https://docs.google.com/document/d/14MKdGoDFrlcBofIAaW4ZBsGCTon-lIIkYeSRyFwFzcc/edit#heading=h.fvk84g2bxw38
+
+https://github.com/alexgurr/react-coding-challenges
+https://hackernoon.com/top-3-coding-challenges-for-expert-level-react-developers
+https://www.freecodecamp.org/news/how-to-stand-out-during-your-react-coding-interview/
+https://www.codeandchaos.com/excercise/jobinterview/2021-02-01-JobInterview-React-Coding-Challenge/
+https://www.youtube.com/watch?v=8uahMXnnRtg
+https://www.youtube.com/watch?v=Kb3YtXDvPo0
+https://github.com/sudheerj/reactjs-interview-questions
+https://medium.com/@justin.sherman/react-coding-interview-challenge-9-dc20873e0ce5
+
 ### Done
 - Dropdown
   - How to close the menu when the user clicks outside of the menu
@@ -91,10 +112,10 @@ Abandon Cart Email Design
   - Using event.key to detect "Enter" on keydown
   - Using an editable state so that you only get updates when the text has finished editing.
 - Infinite Scroll
-  - Based on static height container, and static child heights
+  - This is based on static height container, and static child heights so need to know them first.
   - You need to compute the starting node, the number of visible nodes with padding above and below
   - You have one fixed height container
-  - One viewport container inside that is the total height of all child nodes
+  - One viewport container inside that fixed height container, which has the total height of all child nodes to display the scrollbar correctly.
   - One wrapper container that can be moved within the viewport container
   - Finally, the child nodes are rendered in the wrapper container
   - Need to have scroll aware hook
@@ -122,6 +143,7 @@ Abandon Cart Email Design
   - Use `useMemo` to cache an expensive calculation result. It can take a list of dependencies to update the calculation when the dependencies change
   - However, your component should still work without `useMemo`. React can choose to forget memoized values.
   - Use `useCallback` to cache functions or callbacks so your component doesn't re-render when a new callback is created.
+  - Also, whats the difference between `useCallback` and `useMemo`? The `useMemo` will compute the result when the dependencies change. If a new value is returned, it returns that value. For `useCallback`, if the dependencies change, a new function always return. `useMemo` skips any unnecessary computation while `useCallback` is used to prevent unnecessary renders when new callbacks are created.
   - The React component right under your context provider should probably use `React.memo`
   - All consumers that are descendants of a Provider will re-render whenever the Provider's value props change
   - React updates are done like this: `render/re-render -> reconciliation -> commit`
@@ -146,5 +168,8 @@ Abandon Cart Email Design
     - Single responsibility useEffect (if you can break up a useEffect for better readability then do it)
     - Using requestAnimationFrame instead of throttle or debounce
     - Do not call setState when the component is unmounted
-    -
+  - useEffect hook
+    - it encapsulates componentDidMount, componentOnUpdate, and componentDidUnmount in one function!
+    - it is dangerous to omit deps in useEffect because if you are updating state in useEffect it will trigger a re-render and thus call the useEffect hook again in an infinite loop
+    - if you pass a function as a dep, make sure that function is created via useCallback because if the function was created inside a component's closure, it will create a new one every render causing the useEffect to trigger every time
 
