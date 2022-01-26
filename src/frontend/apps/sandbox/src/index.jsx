@@ -20,6 +20,8 @@ import { RenderPage } from './pages/RenderPage';
 import { CalculatorPage } from './pages/CalculatorPage';
 import { AnalogClockPage } from './pages/AnalogClockPage';
 import { ConnectFourPage } from './pages/ConnectFourPage';
+import { RandomMeSearchPage } from './pages/RandomMeSearchPage';
+import { ChallengePage } from './pages/ChallengePage';
 
 const Pages = [
   {
@@ -111,6 +113,16 @@ const Pages = [
     path: '/connect-four',
     title: 'Connect 4 Page',
     component: ConnectFourPage,
+  },
+  {
+    path: '/randomme-search',
+    title: 'Random Me Search',
+    component: RandomMeSearchPage,
+  },
+  {
+    path: '/challenge',
+    title: 'Challenge page',
+    component: ChallengePage,
   },
 ];
 

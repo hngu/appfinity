@@ -38,6 +38,8 @@ image intersectionobserver component
 
 https://ishadeed.com/article/facebook-messenger-chat-component/
 
+react portals
+
 
 ### Systems
 Coupon Creator
@@ -81,13 +83,12 @@ What if we want the users to get the updates on notifications without opening up
 https://docs.google.com/document/d/14MKdGoDFrlcBofIAaW4ZBsGCTon-lIIkYeSRyFwFzcc/edit#heading=h.fvk84g2bxw38
 
 https://github.com/alexgurr/react-coding-challenges
-https://hackernoon.com/top-3-coding-challenges-for-expert-level-react-developers
 https://www.freecodecamp.org/news/how-to-stand-out-during-your-react-coding-interview/
 https://www.codeandchaos.com/excercise/jobinterview/2021-02-01-JobInterview-React-Coding-Challenge/
 https://www.youtube.com/watch?v=8uahMXnnRtg
 https://www.youtube.com/watch?v=Kb3YtXDvPo0
 https://github.com/sudheerj/reactjs-interview-questions
-https://medium.com/@justin.sherman/react-coding-interview-challenge-9-dc20873e0ce5
+https://medium.com/@justin.sherman/react-coding-interview-challenge-3-94bc3386ba1c
 
 ### Done
 - Dropdown
@@ -151,25 +152,59 @@ https://medium.com/@justin.sherman/react-coding-interview-challenge-9-dc20873e0c
     - `useImperativeHandle`
     - `useLayoutEffect`
     - `useDebugValue`
-  - Calculator
-    - Using CSS grid to build the UI
-    - Need to handle edge cases like using operators one after another, hitting equals multiple times
-    - Need to store two states: what to display and the current expression
-  - React Best Practices
-    - Use absolute paths
-    - Have components into their own folders (the component file, the test file, and index file)
-    - Wrap external components (so refactoring or replacing is easier)
-    - Group files by route/domain. This will tell you more about the project rather than a components folder
-    - Use data fetching libraries like react query
-    - use react prop types and default props (unless you are using typescript then no need)
-    - avoid nested render functions. They are better off in their own component file
-    - avoid HOC and render props. Use hooks instead.
-  - Medium Article FE [Exercise] (https://betterprogramming.pub/my-favorite-coding-interview-task-for-frontened-developers-f3e984fa49e2)
-    - Single responsibility useEffect (if you can break up a useEffect for better readability then do it)
-    - Using requestAnimationFrame instead of throttle or debounce
-    - Do not call setState when the component is unmounted
-  - useEffect hook
-    - it encapsulates componentDidMount, componentOnUpdate, and componentDidUnmount in one function!
-    - it is dangerous to omit deps in useEffect because if you are updating state in useEffect it will trigger a re-render and thus call the useEffect hook again in an infinite loop
-    - if you pass a function as a dep, make sure that function is created via useCallback because if the function was created inside a component's closure, it will create a new one every render causing the useEffect to trigger every time
-
+- Calculator
+  - Using CSS grid to build the UI
+  - Need to handle edge cases like using operators one after another, hitting equals multiple times
+  - Need to store two states: what to display and the current expression
+- React Best Practices
+  - Use absolute paths
+  - Have components into their own folders (the component file, the test file, and index file)
+  - Wrap external components (so refactoring or replacing is easier)
+  - Group files by route/domain. This will tell you more about the project rather than a components folder
+  - Use data fetching libraries like react query
+  - use react prop types and default props (unless you are using typescript then no need)
+  - avoid nested render functions. They are better off in their own component file
+  - avoid HOC and render props. Use hooks instead.
+- Medium Article FE [Exercise] (https://betterprogramming.pub/my-favorite-coding-interview-task-for-frontened-developers-f3e984fa49e2)
+  - Single responsibility useEffect (if you can break up a useEffect for better readability then do it)
+  - Using requestAnimationFrame instead of throttle or debounce
+  - Do not call setState when the component is unmounted
+- useEffect hook
+  - it encapsulates componentDidMount, componentOnUpdate, and componentDidUnmount in one function!
+  - it is dangerous to omit deps in useEffect because if you are updating state in useEffect it will trigger a re-render and thus call the useEffect hook again in an infinite loop
+  - if you pass a function as a dep, make sure that function is created via useCallback because if the function was created inside a component's closure, it will create a new one every render causing the useEffect to trigger every time
+- React Challenges
+  - Beware of JSX conditional rendering
+  - `Object.entries` allows you to loop through with an array of `[key, value]`
+  - Know the JS array methods
+- JSX Conditional Advice
+  - beware of `{number && <JSX />}` because a it will render a 0. Thats because falsy left hand side for `&&` are returned. Just use booleans explicitly in JSX conditionals.
+  - Avoid ternaries if you can
+  - Avoid props.children in JSX conditionals
+  - `{condition ? <Tag props1 /> : <Tag props2 />}` will not remount Tag — use unique key or separate && branches if you want the remount.
+- Reusable React Components
+  - Document props with propTypes or using typescript types
+  - Flatten props (avoid nested props)
+  - Follow Single responsibility Principle: break up components with List/List Items
+  - Create components that have very little business logic (take data - render data)
+  - Use hooks to abstract resuable logic
+- React Profiling
+  - https://reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html
+- React Portals
+  - render a react component outside of its tree hierarchy
+  - biggest use case is if a child component is being clipped by the parent component's dimensions.
+  - For example, rendering a tooltip within a div that has a set width and height. The tooltip can be clipped. You can fix this via CSS but not scalable
+  - Context and event handlers work as you expect in the tree hierarchy.
+- React Refs
+  - React is declarative: views are composed based on state
+  - However, if you want to do something in a view like focus, that is not possible in React
+  - React provides an escape hatch: refs give you the reference to the DOM node of the rendered react element
+  - you can then use that ref to call `focus()`
+  - use refs if you need to have React do something imperatively (instruction or command)
+- React Synthetic Events
+  - JS Event implementations are native to the browser APIs
+  - React provides synthetic events which are react implementation of events that are normalized for all browsers so that developers have a consistent API for interacting with them
+- Prevent Unnecessary React Re-render Ideas
+  - Use Memoization (useMemo, useCallback)
+  - For data fetching, consider react-query (it caches response and wont change values if the response didn't change)
+  - For redux selectors, consider the Reselect library
