@@ -148,6 +148,7 @@ https://medium.com/@justin.sherman/react-coding-interview-challenge-3-94bc3386ba
   - The React component right under your context provider should probably use `React.memo`
   - All consumers that are descendants of a Provider will re-render whenever the Provider's value props change
   - React updates are done like this: `render/re-render -> reconciliation -> commit`
+  - Know that useMemo and useCallback has a cost tradeoff. You incur memory to save time. Also, the memoization is not guarenteed.
   - React hooks
     - `useImperativeHandle`
     - `useLayoutEffect`
