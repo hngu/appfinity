@@ -18,12 +18,15 @@ A collection of apps I love to build!
 - commitizen/husky for semantic release
 - google s2/uber h3
 - GraphQL
+- NestJS fullstack microservices
 
 
 ## DBs to Try:
 - Neo4j
 - Cockroach DB
 - Influx DB
+- Cassandra
+- Elasticsearch
 
 ## Notes
 -

@@ -139,6 +139,7 @@ https://medium.com/@justin.sherman/react-coding-interview-challenge-3-94bc3386ba
   - Handling text input for numeric values - what if the user enters blank?
   - To subtract days: `d.setDate(d.getDate() - 1)`
 - React Render
+  - React team wants to retire the term "Virtual DOM" and instead use "value UI". React manages/changes it like any other variable.
   - In normal rendering, if the parent component re-renders, its children will also rerender!
   - use `React.memo` or `useMemo` to memoize expensive child components and only rerender when props change.
   - Use `useMemo` to cache an expensive calculation result. It can take a list of dependencies to update the calculation when the dependencies change
