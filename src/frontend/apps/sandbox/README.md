@@ -2,6 +2,12 @@
 1. Install hnvm
 2. Run yarn add
 
+Alternatively:
+1. Install nvm
+2. Install the latest LTS node version and use it
+3. Install yarn via `npm install --global yarn`
+4. Run `yarn install`
+
 ### Start development
 1. Run yarn start
 
