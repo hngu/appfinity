@@ -88,7 +88,7 @@ https://www.codeandchaos.com/excercise/jobinterview/2021-02-01-JobInterview-Reac
 https://www.youtube.com/watch?v=8uahMXnnRtg
 https://www.youtube.com/watch?v=Kb3YtXDvPo0
 https://github.com/sudheerj/reactjs-interview-questions
-https://medium.com/@justin.sherman/react-coding-interview-challenge-3-94bc3386ba1c
+https://medium.com/@justin.sherman/react-coding-interview-challenge-4-c41e2874d8ef
 
 ### Done
 - Dropdown
@@ -179,6 +179,7 @@ https://medium.com/@justin.sherman/react-coding-interview-challenge-3-94bc3386ba
   - Beware of JSX conditional rendering
   - `Object.entries` allows you to loop through with an array of `[key, value]`
   - Know the JS array methods
+  - Rendering list of objects where each object can be expand/collapse with additional data for that object: use a component that consumes an individual list item. That component can have inner state `expand, setExpand`. When you add/remove/update the list of objects, the ones that are not added or deleted won't reset the expanded states. The updated one will though. That's the drawback. The way it knows this is using the key prop. When the key prop changes, the entire component is re-rendered. You can use the key prop to identify a react component instance and when it is changed, React will destroy that instance and create a new one.
 - JSX Conditional Advice
   - beware of `{number && <JSX />}` because a it will render a 0. Thats because falsy left hand side for `&&` are returned. Just use booleans explicitly in JSX conditionals.
   - Avoid ternaries if you can
@@ -210,3 +211,9 @@ https://medium.com/@justin.sherman/react-coding-interview-challenge-3-94bc3386ba
   - Use Memoization (useMemo, useCallback)
   - For data fetching, consider react-query (it caches response and wont change values if the response didn't change)
   - For redux selectors, consider the Reselect library
+- Performant React: Rules and Patterns
+  - React components re-render when: state change, props change, the parent component changes, or when a component uses context and the value of the provider changes
+  - Rule 1: if the only reason to use useCallback is to prevent re-renders of child components - it wont work
+  - Rule 2: If your component manages state, find parts of the component that don't rely on state and memoize them to minimize re-renders
+  - Rule 3: never create new components inside the render of another component
+  - Rule 4: When using context, memoize the value when it is not a number, string or boolean
