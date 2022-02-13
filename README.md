@@ -19,6 +19,9 @@ A collection of apps I love to build!
 - google s2/uber h3
 - GraphQL
 - NestJS fullstack microservices
+- apache chukwa
+- Apache Samza
+- apache spark for recommendations
 
 
 ## DBs to Try:
