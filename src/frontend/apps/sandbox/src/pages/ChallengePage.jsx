@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 export const ChallengePage = () => {
   return (
     <>
       <h2>Challenge</h2>
-      <RobotList />
+      <Ladder img={LADDER_IMAGE} />
     </>
   );
 };
@@ -103,4 +103,94 @@ const robotGridStyle = {
   display: 'grid',
   gridTemplateRows: 'repeat(3, 1fr)',
   gridTemplateColumns: 'repeat(3, 1fr)',
+};
+
+const GenerateList = () => {
+  const [activities, setActivities] = useState([]);
+
+  const fetchActivity = async () => {
+    const response = await fetch('https://www.boredapi.com/api/activity');
+    const json = await response.json();
+    setActivities((a) => [...a, json]);
+  };
+
+  useEffect(() => {
+    fetchActivity();
+  }, []);
+
+  return activities.length ? (
+    <div>
+      <p>
+        <button onClick={fetchActivity}>Generate Activity</button>
+      </p>
+      <ul>
+        {activities.map((a, index) => (
+          <li key={index}>
+            <ExpandableListItem item={a} />
+          </li>
+        ))}
+      </ul>
+    </div>
+  ) : null;
+};
+
+const ExpandableListItem = ({ item }) => {
+  const [expand, setExpand] = useState(false);
+  const toggleExpand = () => {
+    setExpand((e) => !e);
+  };
+
+  return (
+    <>
+      <div>
+        {item.activity}
+        <button onClick={toggleExpand}>{expand ? 'Collapse' : 'Expand'}</button>
+      </div>
+      {expand && (
+        <ul>
+          <li>Type: {item.type}</li>
+          <li>Participants: {item.participants}</li>
+          <li>Price: {item.price}</li>
+        </ul>
+      )}
+    </>
+  );
+};
+
+const LADDER_IMAGE = 'https://raw.githubusercontent.com/jusshe/coding-challenge-pictures/main/ladder.png';
+
+const Ladder = ({ img }) => {
+  const ladders = new Array(5).fill(0);
+  const [hoverId, setHoverId] = useState(null);
+
+  const onMouseOver = (index) => {
+    setHoverId(index);
+  };
+
+  const onMouseOut = () => {
+    setHoverId(null);
+  };
+
+  const getWidth = (index) => {
+    return hoverId !== null && index >= hoverId ? 764 : 382;
+  };
+
+  const getHeight = (index) => {
+    return hoverId !== null && index >= hoverId ? 648 : 324;
+  };
+
+  return (
+    <div style={{ display: 'inline-grid', alignItems: 'column' }}>
+      {ladders.map((_, index) => (
+        <img
+          key={index}
+          src={img}
+          onMouseEnter={() => onMouseOver(index)}
+          onMouseOut={onMouseOut}
+          width={getWidth(index)}
+          height={getHeight(index)}
+        />
+      ))}
+    </div>
+  );
 };
