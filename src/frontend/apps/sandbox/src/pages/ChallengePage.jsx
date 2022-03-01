@@ -4,7 +4,7 @@ export const ChallengePage = () => {
   return (
     <>
       <h2>Challenge</h2>
-      <Ladder img={LADDER_IMAGE} />
+      <UserOnlineContextApp />
     </>
   );
 };
@@ -192,5 +192,53 @@ const Ladder = ({ img }) => {
         />
       ))}
     </div>
+  );
+};
+
+const UserOnlineContext = React.createContext(null);
+
+function UserOnlineContextApp() {
+  const [userState, setUserState] = useState({
+    Bob: true,
+    Gary: true,
+    Jessica: true,
+    Sam: true,
+    Eric: true,
+  });
+  const value = {
+    userState,
+    setUserState,
+  };
+
+  return (
+    <UserOnlineContext.Provider value={value}>
+      <UserList />
+    </UserOnlineContext.Provider>
+  );
+}
+
+const UserList = () => {
+  const { userState, setUserState } = React.useContext(UserOnlineContext);
+  const users = Object.entries(userState);
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      const randomIndex = Math.floor(Math.random() * users.length);
+      const randomUser = users[randomIndex];
+
+      setUserState((currenState) => {
+        return { ...currenState, [randomUser[0]]: !randomUser[1] };
+      });
+    }, 2000);
+
+    return () => clearInterval(intervalId);
+  }, [users, setUserState]);
+  return (
+    <>
+      {users.map(([name, isOnline]) => (
+        <div key={name}>
+          {name} {`${isOnline}`}
+        </div>
+      ))}
+    </>
   );
 };

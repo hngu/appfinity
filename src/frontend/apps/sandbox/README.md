@@ -88,7 +88,7 @@ https://www.codeandchaos.com/excercise/jobinterview/2021-02-01-JobInterview-Reac
 https://www.youtube.com/watch?v=8uahMXnnRtg
 https://www.youtube.com/watch?v=Kb3YtXDvPo0
 https://github.com/sudheerj/reactjs-interview-questions
-https://medium.com/@justin.sherman/react-coding-interview-challenge-4-c41e2874d8ef
+https://medium.com/@justin.sherman/react-coding-interview-challenge-6-222d66b6cdd5
 
 ### Done
 - Dropdown
@@ -184,6 +184,7 @@ https://medium.com/@justin.sherman/react-coding-interview-challenge-4-c41e2874d8
   - if you use a ref inside a useEffect, and you want to do some clean up on it (like removeEventListener), you get a eslint issue: "the ref value will likely have changed by the time...". This is telling you that the clean up function always run async and can run way after the ref is set to null. So what you have to do is set a local variable to references the current ref so that the closure created by the clean up function will have the correct ref.
   - Ladder exercise: on hover, set id and compute the width and height based on the id. Basically, keep it simple and figure out what image is hovered first and manipulate width and height.
   - Refs has the node object so you can do `ref.current.contains` where as `event.target` is not a node object and does not have `.contains`.
+  - Is it safe to omit functions from list of dependencies? Generally, no. Let's say you have a useEffect that calls a function that is declared outside of the use effect. The use effect won't know what states/props are being updated in the outside function. So usually you'll want to declare functions needed by an effect inside of it.
 - JSX Conditional Advice
   - beware of `{number && <JSX />}` because a it will render a 0. Thats because falsy left hand side for `&&` are returned. Just use booleans explicitly in JSX conditionals.
   - Avoid ternaries if you can
