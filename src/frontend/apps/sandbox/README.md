@@ -70,18 +70,6 @@ Analytics
 
 Abandon Cart Email Design
 
-Design a system for an analytics app similar to Google Analytics where a client will place a segment of our code onto each of their websites' pages, and we will provide analytics for things such as an audience behavior / user-flow [see attached screenshot, below], an active element heat-map per page (what the user focused/clicked on), as well as other insightful data on an admin site which the client will need credentials to view.
-
-
-Please design a notification system based on the markup and focus on FE
-What if the status needs to be shared among multiple components?
-There may be hundreds of notifications, how can we load them to keep a good UX?
-How about the “mark all as read” doing now?
-What if the notifications are coming from multiple sources?
-What if we want the users to get the updates on notifications without opening up the bell?
-
-https://docs.google.com/document/d/14MKdGoDFrlcBofIAaW4ZBsGCTon-lIIkYeSRyFwFzcc/edit#heading=h.fvk84g2bxw38
-
 https://github.com/alexgurr/react-coding-challenges
 https://www.freecodecamp.org/news/how-to-stand-out-during-your-react-coding-interview/
 https://www.codeandchaos.com/excercise/jobinterview/2021-02-01-JobInterview-React-Coding-Challenge/
@@ -185,6 +173,8 @@ https://medium.com/@justin.sherman/react-coding-interview-challenge-6-222d66b6cd
   - Ladder exercise: on hover, set id and compute the width and height based on the id. Basically, keep it simple and figure out what image is hovered first and manipulate width and height.
   - Refs has the node object so you can do `ref.current.contains` where as `event.target` is not a node object and does not have `.contains`.
   - Is it safe to omit functions from list of dependencies? Generally, no. Let's say you have a useEffect that calls a function that is declared outside of the use effect. The use effect won't know what states/props are being updated in the outside function. So usually you'll want to declare functions needed by an effect inside of it.
+  - Interesting - in strict mode the setState function is called [twice](https://stackoverflow.com/questions/61543226/any-reason-for-a-react-state-hook-set-callback-to-fire-twice) so don't try to do anything silly there with toggling true/false in setState
+  - How come I can use setList in the #6?
 - JSX Conditional Advice
   - beware of `{number && <JSX />}` because a it will render a 0. Thats because falsy left hand side for `&&` are returned. Just use booleans explicitly in JSX conditionals.
   - Avoid ternaries if you can

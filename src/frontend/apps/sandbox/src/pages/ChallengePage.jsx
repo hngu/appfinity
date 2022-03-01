@@ -4,7 +4,7 @@ export const ChallengePage = () => {
   return (
     <>
       <h2>Challenge</h2>
-      <UserOnlineContextApp />
+      <ChecklistApp />
     </>
   );
 };
@@ -239,6 +239,97 @@ const UserList = () => {
           {name} {`${isOnline}`}
         </div>
       ))}
+    </>
+  );
+};
+
+const INITIAL_LIST = {
+  'Organize closet': [
+    { 'Donate old clothes and shoes': false },
+    { 'Buy new shelf': false },
+    { 'Put in shelf by color': false },
+  ],
+  'Finish homework': [
+    { 'Finish math homework': false },
+    { 'Finish science homework': false },
+    { 'Finish Reactjs homework': false },
+  ],
+  'Achieve nirvana': [{ 'Meditate a little': false }, { 'Gain some wisdom': false }],
+};
+
+function ChecklistApp() {
+  return <Checklist />;
+}
+
+const Checklist = () => {
+  const [list] = useState(INITIAL_LIST);
+  return (
+    <>
+      {Object.entries(list).map(([task, subtasks]) => (
+        <Task taskName={task} key={task} subtasks={subtasks} />
+      ))}
+    </>
+  );
+};
+
+const Task = ({ taskName, subtasks }) => {
+  const [subtasksState, setSubTasksState] = useState(subtasks);
+  const cleanSubTasks = subtasksState.reduce((agg, subtask) => {
+    Object.keys(subtask).forEach((s) => {
+      agg.push({
+        subtask: s,
+        value: subtask[s],
+      });
+    });
+    return agg;
+  }, []);
+
+  const toggleSubTask = (subtaskKey) => {
+    const newState = subtasksState.map((item) => {
+      if (item[subtaskKey] !== undefined) {
+        item[subtaskKey] = !item[subtaskKey];
+      }
+      return item;
+    });
+    setSubTasksState(newState);
+  };
+  return (
+    <>
+      <h2>{taskName}</h2>
+      <div style={{ display: 'flex', flexDirection: 'row' }}>
+        <table>
+          <thead>
+            <td>
+              <h3>In Progress</h3>
+            </td>
+          </thead>
+          <tbody>
+            {cleanSubTasks
+              .filter((s) => !s.value)
+              .map((subtask) => (
+                <tr key={subtask.subtask} onClick={() => toggleSubTask(subtask.subtask)}>
+                  <td>{subtask.subtask}</td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
+        <table>
+          <thead>
+            <td>
+              <h3>Completed</h3>
+            </td>
+          </thead>
+          <tbody>
+            {cleanSubTasks
+              .filter((s) => s.value)
+              .map((subtask) => (
+                <tr key={subtask.subtask} onClick={() => toggleSubTask(subtask.subtask)}>
+                  <td>{subtask.subtask}</td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 };
