@@ -76,7 +76,7 @@ https://www.codeandchaos.com/excercise/jobinterview/2021-02-01-JobInterview-Reac
 https://www.youtube.com/watch?v=8uahMXnnRtg
 https://www.youtube.com/watch?v=Kb3YtXDvPo0
 https://github.com/sudheerj/reactjs-interview-questions
-https://medium.com/@justin.sherman/react-coding-interview-challenge-6-222d66b6cdd5
+https://medium.com/@justin.sherman/react-coding-interview-challenge-7-a773daf12955
 
 ### Done
 - Dropdown
@@ -174,7 +174,9 @@ https://medium.com/@justin.sherman/react-coding-interview-challenge-6-222d66b6cd
   - Refs has the node object so you can do `ref.current.contains` where as `event.target` is not a node object and does not have `.contains`.
   - Is it safe to omit functions from list of dependencies? Generally, no. Let's say you have a useEffect that calls a function that is declared outside of the use effect. The use effect won't know what states/props are being updated in the outside function. So usually you'll want to declare functions needed by an effect inside of it.
   - Interesting - in strict mode the setState function is called [twice](https://stackoverflow.com/questions/61543226/any-reason-for-a-react-state-hook-set-callback-to-fire-twice) so don't try to do anything silly there with toggling true/false in setState
-  - How come I can use setList in the #6?
+  - How come I can use setList in the #6? I has to get the subtask, then index it. I didn't index before.
+  - You can set the whole list but then the whole component gets re-rendered so the better solution is to update local state
+  - returning null or false in JSX curly braces will be ignored
 - JSX Conditional Advice
   - beware of `{number && <JSX />}` because a it will render a 0. Thats because falsy left hand side for `&&` are returned. Just use booleans explicitly in JSX conditionals.
   - Avoid ternaries if you can

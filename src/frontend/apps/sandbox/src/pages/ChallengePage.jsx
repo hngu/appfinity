@@ -4,7 +4,7 @@ export const ChallengePage = () => {
   return (
     <>
       <h2>Challenge</h2>
-      <ChecklistApp />
+      <InputBlockApp />
     </>
   );
 };
@@ -336,5 +336,90 @@ const Task = ({ taskName, subtasks, toggleTask }) => {
         </table>
       </div>
     </>
+  );
+};
+
+const InputBlockApp = () => {
+  const [sentences, setSentences] = useState([]);
+  const [sentence, setSentence] = useState('');
+  const [showModal, setShowModal] = useState(false);
+  const [modalText, setModalText] = useState('');
+
+  const addSentence = (e) => {
+    e.preventDefault();
+    if (sentence.trim() === '') {
+      return;
+    }
+    setSentences([...sentences, sentence]);
+    setSentence('');
+  };
+
+  const textClick = (text) => {
+    return () => {
+      setModalText(text);
+      setShowModal(true);
+    };
+  };
+
+  const closeModal = () => {
+    setModalText('');
+    setShowModal(false);
+  };
+  return (
+    <>
+      <form onSubmit={addSentence}>
+        <input type="text" value={sentence} onChange={(e) => setSentence(e.target.value)} />
+      </form>
+      <ul>
+        {sentences.map((s) => (
+          <li key={s}>
+            <ShortenedText text={s} onTextClick={textClick(s)} />
+          </li>
+        ))}
+      </ul>
+      {showModal && <Modal onClose={closeModal}>{modalText}</Modal>}
+    </>
+  );
+};
+
+const ShortenedText = ({ text, onTextClick }) => {
+  let shortenedText = text;
+  if (shortenedText.length > 5) {
+    shortenedText = shortenedText.substr(0, 5) + '...';
+  }
+  return <div onClick={onTextClick}>{shortenedText}</div>;
+};
+
+const modalStyles = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: '500px',
+  height: '500px',
+  border: '1px black solid',
+  textAlign: 'center',
+};
+const Modal = ({ children, onClose }) => {
+  const modalRef = useRef(null);
+  useEffect(() => {
+    const onBodyClick = (e) => {
+      console.log('click');
+      if (!modalRef.current) {
+        return;
+      }
+      if (!modalRef.current.contains(e.target)) {
+        onClose();
+      }
+    };
+    window.addEventListener('click', onBodyClick);
+
+    return () => window.removeEventListener('click', onBodyClick);
+  }, []); // hmm why?
+
+  return (
+    <div ref={modalRef} style={modalStyles}>
+      {children}
+    </div>
   );
 };
