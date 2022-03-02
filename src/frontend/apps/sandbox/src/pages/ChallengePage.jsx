@@ -262,19 +262,29 @@ function ChecklistApp() {
 }
 
 const Checklist = () => {
-  const [list] = useState(INITIAL_LIST);
+  const [list, setList] = useState(INITIAL_LIST);
+  const toggleTask = (taskKey, subTaskKey) => {
+    const newList = { ...INITIAL_LIST };
+    newList[taskKey] = newList[taskKey].map((subtask) => {
+      if (subtask[subTaskKey] !== undefined) {
+        subtask[subTaskKey] = !subtask[subTaskKey];
+      }
+      return subtask;
+    });
+    setList(newList);
+  };
   return (
     <>
       {Object.entries(list).map(([task, subtasks]) => (
-        <Task taskName={task} key={task} subtasks={subtasks} />
+        <Task taskName={task} key={task} subtasks={subtasks} toggleTask={toggleTask} />
       ))}
     </>
   );
 };
 
-const Task = ({ taskName, subtasks }) => {
-  const [subtasksState, setSubTasksState] = useState(subtasks);
-  const cleanSubTasks = subtasksState.reduce((agg, subtask) => {
+const Task = ({ taskName, subtasks, toggleTask }) => {
+  console.log('task rendered');
+  const cleanSubTasks = subtasks.reduce((agg, subtask) => {
     Object.keys(subtask).forEach((s) => {
       agg.push({
         subtask: s,
@@ -284,30 +294,23 @@ const Task = ({ taskName, subtasks }) => {
     return agg;
   }, []);
 
-  const toggleSubTask = (subtaskKey) => {
-    const newState = subtasksState.map((item) => {
-      if (item[subtaskKey] !== undefined) {
-        item[subtaskKey] = !item[subtaskKey];
-      }
-      return item;
-    });
-    setSubTasksState(newState);
-  };
   return (
     <>
       <h2>{taskName}</h2>
       <div style={{ display: 'flex', flexDirection: 'row' }}>
         <table>
           <thead>
-            <td>
-              <h3>In Progress</h3>
-            </td>
+            <tr>
+              <th>
+                <h3>In Progress</h3>
+              </th>
+            </tr>
           </thead>
           <tbody>
             {cleanSubTasks
               .filter((s) => !s.value)
               .map((subtask) => (
-                <tr key={subtask.subtask} onClick={() => toggleSubTask(subtask.subtask)}>
+                <tr key={subtask.subtask} onClick={() => toggleTask(taskName, subtask.subtask)}>
                   <td>{subtask.subtask}</td>
                 </tr>
               ))}
@@ -315,15 +318,17 @@ const Task = ({ taskName, subtasks }) => {
         </table>
         <table>
           <thead>
-            <td>
-              <h3>Completed</h3>
-            </td>
+            <tr>
+              <th>
+                <h3>Completed</h3>
+              </th>
+            </tr>
           </thead>
           <tbody>
             {cleanSubTasks
               .filter((s) => s.value)
               .map((subtask) => (
-                <tr key={subtask.subtask} onClick={() => toggleSubTask(subtask.subtask)}>
+                <tr key={subtask.subtask} onClick={() => toggleTask(taskName, subtask.subtask)}>
                   <td>{subtask.subtask}</td>
                 </tr>
               ))}
