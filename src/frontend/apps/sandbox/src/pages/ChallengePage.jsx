@@ -4,7 +4,7 @@ export const ChallengePage = () => {
   return (
     <>
       <h2>Challenge</h2>
-      <InputBlockApp />
+      <QuizApp />
     </>
   );
 };
@@ -420,6 +420,78 @@ const Modal = ({ children, onClose }) => {
   return (
     <div ref={modalRef} style={modalStyles}>
       {children}
+    </div>
+  );
+};
+
+const QUESTIONS = [
+  {
+    question: 'What is 2*(4+4)?',
+    answers: ['2', '4', '8', '16'],
+    correct: 3,
+  },
+  {
+    question: 'What is 9*9?',
+    answers: ['18', '81', '80', '79'],
+    correct: 1,
+  },
+  {
+    question: 'Who was the first president of the United States?',
+    answers: ['George Washington', 'John Adams', 'John Quincy Adams', 'Thomas Jefferson'],
+    correct: 0,
+  },
+  {
+    question: 'What state is Philadelphia in?',
+    answers: ['Commonwealth of Pennsylvania', 'New Jersey', 'New York', 'Massachusetts'],
+    correct: 0,
+  },
+  {
+    question: 'What are the two major political parties in the United States?',
+    answers: [
+      'Democratic Party & Republican Party',
+      'Green Party & Red Party',
+      'Bull Party & Moose Party',
+      'Hamilton Party & Burr Party',
+    ],
+    correct: 0,
+  },
+];
+
+function QuizApp() {
+  return <Quiz questions={QUESTIONS} />;
+}
+
+const Quiz = ({ questions }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [userAnswers, setUserAnswers] = useState([]);
+  const question = questions[currentIndex];
+  const isDone = currentIndex >= questions.length;
+  const score = isDone
+    ? userAnswers.reduce((agg, current, index) => (questions[index].correct === current ? agg + 1 : agg), 0)
+    : 0;
+  // TODO need to check bounds
+
+  const onSelect = (index) => {
+    setUserAnswers([...userAnswers, index]);
+    setCurrentIndex((prevIndex) => prevIndex + 1);
+  };
+
+  return (
+    <div>
+      <h2>Quiz</h2>
+      {isDone && <p>Total score: {(score / questions.length) * 100} </p>}
+      {!isDone && (
+        <form onSubmit={(e) => e.preventDefault()}>
+          <p>{question.question}</p>
+          {question.answers.map((choice, index) => (
+            <>
+              <input type="radio" id={choice} key={choice} value={index} onClick={() => onSelect(index)} />
+              <label htmlFor={choice}>{choice}</label>
+              <br />
+            </>
+          ))}
+        </form>
+      )}
     </div>
   );
 };

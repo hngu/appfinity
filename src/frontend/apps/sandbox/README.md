@@ -76,7 +76,7 @@ https://www.codeandchaos.com/excercise/jobinterview/2021-02-01-JobInterview-Reac
 https://www.youtube.com/watch?v=8uahMXnnRtg
 https://www.youtube.com/watch?v=Kb3YtXDvPo0
 https://github.com/sudheerj/reactjs-interview-questions
-https://medium.com/@justin.sherman/react-coding-interview-challenge-7-a773daf12955
+https://medium.com/@justin.sherman/react-coding-interview-challenge-10-7d92416a8c7a
 
 ### Done
 - Dropdown
@@ -177,6 +177,7 @@ https://medium.com/@justin.sherman/react-coding-interview-challenge-7-a773daf129
   - How come I can use setList in the #6? I has to get the subtask, then index it. I didn't index before.
   - You can set the whole list but then the whole component gets re-rendered so the better solution is to update local state
   - returning null or false in JSX curly braces will be ignored
+  - For scoring, just keep a total score state and calculate if the score is correct. if it is, increment score.
 - JSX Conditional Advice
   - beware of `{number && <JSX />}` because a it will render a 0. Thats because falsy left hand side for `&&` are returned. Just use booleans explicitly in JSX conditionals.
   - Avoid ternaries if you can
