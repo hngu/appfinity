@@ -12,7 +12,7 @@
 https://medium.com/@manojsingh047/understanding-frontend-security-ff6585395534
 
 https://learnk8s.io/kubernetes-for-developers
-https://dev.to/lunaticmonk/understanding-the-node-js-event-loop-phases-and-how-it-executes-the-javascript-code-1j9
+
 
 Star Rating
 
@@ -39,6 +39,8 @@ image intersectionobserver component
 https://ishadeed.com/article/facebook-messenger-chat-component/
 
 react portals
+
+https://github.com/sudheerj/reactjs-interview-questions
 
 
 ### Systems
@@ -69,14 +71,6 @@ Template Builder
 Analytics
 
 Abandon Cart Email Design
-
-https://github.com/alexgurr/react-coding-challenges
-https://www.freecodecamp.org/news/how-to-stand-out-during-your-react-coding-interview/
-https://www.codeandchaos.com/excercise/jobinterview/2021-02-01-JobInterview-React-Coding-Challenge/
-https://www.youtube.com/watch?v=8uahMXnnRtg
-https://www.youtube.com/watch?v=Kb3YtXDvPo0
-https://github.com/sudheerj/reactjs-interview-questions
-https://medium.com/@justin.sherman/react-coding-interview-challenge-10-7d92416a8c7a
 
 ### Done
 - Dropdown
