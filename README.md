@@ -19,7 +19,10 @@ A collection of apps I love to build!
 - google s2/uber h3
 - GraphQL
 - NestJS fullstack microservices
-
+- apache chukwa
+- Apache Samza
+- apache spark for recommendations
+- [Docusaurus](https://docusaurus.io/)
 
 ## DBs to Try:
 - Neo4j

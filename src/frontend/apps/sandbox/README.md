@@ -18,7 +18,7 @@ Alternatively:
 https://medium.com/@manojsingh047/understanding-frontend-security-ff6585395534
 
 https://learnk8s.io/kubernetes-for-developers
-https://dev.to/lunaticmonk/understanding-the-node-js-event-loop-phases-and-how-it-executes-the-javascript-code-1j9
+
 
 Star Rating
 
@@ -45,6 +45,8 @@ image intersectionobserver component
 https://ishadeed.com/article/facebook-messenger-chat-component/
 
 react portals
+
+https://github.com/sudheerj/reactjs-interview-questions
 
 
 ### Systems
@@ -75,26 +77,6 @@ Template Builder
 Analytics
 
 Abandon Cart Email Design
-
-Design a system for an analytics app similar to Google Analytics where a client will place a segment of our code onto each of their websites' pages, and we will provide analytics for things such as an audience behavior / user-flow [see attached screenshot, below], an active element heat-map per page (what the user focused/clicked on), as well as other insightful data on an admin site which the client will need credentials to view.
-
-
-Please design a notification system based on the markup and focus on FE
-What if the status needs to be shared among multiple components?
-There may be hundreds of notifications, how can we load them to keep a good UX?
-How about the “mark all as read” doing now?
-What if the notifications are coming from multiple sources?
-What if we want the users to get the updates on notifications without opening up the bell?
-
-https://docs.google.com/document/d/14MKdGoDFrlcBofIAaW4ZBsGCTon-lIIkYeSRyFwFzcc/edit#heading=h.fvk84g2bxw38
-
-https://github.com/alexgurr/react-coding-challenges
-https://www.freecodecamp.org/news/how-to-stand-out-during-your-react-coding-interview/
-https://www.codeandchaos.com/excercise/jobinterview/2021-02-01-JobInterview-React-Coding-Challenge/
-https://www.youtube.com/watch?v=8uahMXnnRtg
-https://www.youtube.com/watch?v=Kb3YtXDvPo0
-https://github.com/sudheerj/reactjs-interview-questions
-https://medium.com/@justin.sherman/react-coding-interview-challenge-4-c41e2874d8ef
 
 ### Done
 - Dropdown
@@ -186,6 +168,16 @@ https://medium.com/@justin.sherman/react-coding-interview-challenge-4-c41e2874d8
   - `Object.entries` allows you to loop through with an array of `[key, value]`
   - Know the JS array methods
   - Rendering list of objects where each object can be expand/collapse with additional data for that object: use a component that consumes an individual list item. That component can have inner state `expand, setExpand`. When you add/remove/update the list of objects, the ones that are not added or deleted won't reset the expanded states. The updated one will though. That's the drawback. The way it knows this is using the key prop. When the key prop changes, the entire component is re-rendered. You can use the key prop to identify a react component instance and when it is changed, React will destroy that instance and create a new one.
+  - if you set state with a stale state/prop object in a useeffect, react will complain and will ask you to add that state or prop as a dependency. That is because when the useEffect runs, it will have a closure to a stale state or prop object. It is warning you about that. One strategy is to use the setState(a => ) to get the current state.
+  - if you use a ref inside a useEffect, and you want to do some clean up on it (like removeEventListener), you get a eslint issue: "the ref value will likely have changed by the time...". This is telling you that the clean up function always run async and can run way after the ref is set to null. So what you have to do is set a local variable to references the current ref so that the closure created by the clean up function will have the correct ref.
+  - Ladder exercise: on hover, set id and compute the width and height based on the id. Basically, keep it simple and figure out what image is hovered first and manipulate width and height.
+  - Refs has the node object so you can do `ref.current.contains` where as `event.target` is not a node object and does not have `.contains`.
+  - Is it safe to omit functions from list of dependencies? Generally, no. Let's say you have a useEffect that calls a function that is declared outside of the use effect. The use effect won't know what states/props are being updated in the outside function. So usually you'll want to declare functions needed by an effect inside of it.
+  - Interesting - in strict mode the setState function is called [twice](https://stackoverflow.com/questions/61543226/any-reason-for-a-react-state-hook-set-callback-to-fire-twice) so don't try to do anything silly there with toggling true/false in setState
+  - How come I can use setList in the #6? I has to get the subtask, then index it. I didn't index before.
+  - You can set the whole list but then the whole component gets re-rendered so the better solution is to update local state
+  - returning null or false in JSX curly braces will be ignored
+  - For scoring, just keep a total score state and calculate if the score is correct. if it is, increment score.
 - JSX Conditional Advice
   - beware of `{number && <JSX />}` because a it will render a 0. Thats because falsy left hand side for `&&` are returned. Just use booleans explicitly in JSX conditionals.
   - Avoid ternaries if you can

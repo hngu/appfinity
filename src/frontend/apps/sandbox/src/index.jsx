@@ -22,6 +22,8 @@ import { AnalogClockPage } from './pages/AnalogClockPage';
 import { ConnectFourPage } from './pages/ConnectFourPage';
 import { RandomMeSearchPage } from './pages/RandomMeSearchPage';
 import { ChallengePage } from './pages/ChallengePage';
+import { ReactPDFPage } from './pages/ReactPDFPage';
+import { ReactContextPage } from './pages/ReactContextPage';
 
 const Pages = [
   {
@@ -123,6 +125,16 @@ const Pages = [
     path: '/challenge',
     title: 'Challenge page',
     component: ChallengePage,
+  },
+  {
+    path: '/react-pdf',
+    title: 'React PDF Page',
+    component: ReactPDFPage,
+  },
+  {
+    path: '/react-context',
+    title: 'React Context page',
+    component: ReactContextPage,
   },
 ];
 
