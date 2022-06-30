@@ -30,6 +30,7 @@ A collection of apps I love to build!
 - Influx DB
 - Cassandra
 - Elasticsearch
+- YugabyteDB
 
 ## Notes
 -
