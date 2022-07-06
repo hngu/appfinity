@@ -33,4 +33,4 @@ A collection of apps I love to build!
 - YugabyteDB
 
 ## Notes
--
+- Website to view what other companies are using in their tech stack https://stackshare.io/
