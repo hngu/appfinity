@@ -29,6 +29,7 @@ A collection of apps I love to build!
 - Cockroach DB
 - Influx DB
 - Cassandra
+- Scylla DB
 - Elasticsearch
 - YugabyteDB
 
