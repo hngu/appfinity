@@ -1,6 +1,22 @@
 # appfinity
 A collection of apps I love to build!
 
+## Ideas
+- search engine
+- facebook clone
+- dating app
+- hotel/airline booking system
+- payment system
+- stock broker
+- budgeting app
+- amazon or marketplace app
+- CI/CD system
+- Youtube clone
+- tiktok clone
+- analytics system
+- uber clone
+- grubhub clone
+
 ## Languages to Try:
 - Golang
 - Rust
