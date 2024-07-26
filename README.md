@@ -48,6 +48,7 @@ A collection of apps I love to build!
 - Scylla DB
 - Elasticsearch
 - YugabyteDB
+- Opensearch
 
 ## Notes
 - Website to view what other companies are using in their tech stack https://stackshare.io/
